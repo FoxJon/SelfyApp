@@ -22,9 +22,23 @@
                  clientKey:@"dKLyXccYHUy1MXNgrdR2Sq5b1fNQoTr4clSXVd3p"];
     
     [PFUser enableAutomaticUser];
-
-   // self.window.rootViewController = [[SLFSelfyVC alloc]initWithNibName:nil bundle:nil];
     
+    UINavigationController * nc;
+    
+    PFUser * user = [PFUser currentUser];
+    
+    NSString * username = user.username;
+    
+    if (username == nil) {
+        nc = [[UINavigationController alloc]initWithRootViewController:[[SLFLogInVC alloc]initWithNibName:nil bundle:nil]];
+        nc.navigationBarHidden = YES;
+
+    }else{
+        nc = [[UINavigationController alloc]initWithRootViewController:[[SLFTableVC alloc]initWithNibName:nil bundle:nil]];
+    }
+    
+
+    self.window.rootViewController = nc;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

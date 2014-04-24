@@ -25,7 +25,7 @@
     if (self) {
         // Custom initialization
         
-        userNameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 125, 200, 40)];
+        userNameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 200, 200, 40)];
         userNameLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         userNameLabel.layer.cornerRadius = 6;
         userNameLabel.leftViewMode = UITextFieldViewModeAlways;
@@ -36,7 +36,7 @@
 
         [self.view addSubview:userNameLabel];
 
-        passwordLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 200, 200, 40)];
+        passwordLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 275, 200, 40)];
         passwordLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         passwordLabel.layer.cornerRadius = 6;
         passwordLabel.leftViewMode = UITextFieldViewModeAlways;
@@ -48,7 +48,7 @@
         
         [self.view addSubview:passwordLabel];
         
-        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 275, 100, 40)];
+        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 350, 100, 40)];
         [submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
         [submitButton addTarget:self action:@selector(newUser) forControlEvents:UIControlEventTouchUpInside];
         submitButton.backgroundColor = [UIColor blueColor];
@@ -96,12 +96,17 @@
     user.username = userNameLabel.text;
     user.password = passwordLabel.text;
     
-    NSLog(@"%@", user.username);
-    NSLog(@"%@", user.password);
-
-    NSLog(@"clicking");
+    userNameLabel.text = nil;
+    passwordLabel.text = nil;
     
-    [user saveInBackground];
+    
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error == nil) {
+            
+        }else{
+            
+        }
+    }];
 }
 
 /*
