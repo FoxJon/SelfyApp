@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01F955D19098B8C005C9A6A /* SLFNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = B01F955C19098B8C005C9A6A /* SLFNavController.m */; };
 		B04CF3B81905895600A265B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3B71905895600A265B5 /* Foundation.framework */; };
 		B04CF3BA1905895600A265B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3B91905895600A265B5 /* CoreGraphics.framework */; };
 		B04CF3BC1905895600A265B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3BB1905895600A265B5 /* UIKit.framework */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B01F955B19098B8C005C9A6A /* SLFNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFNavController.h; sourceTree = "<group>"; };
+		B01F955C19098B8C005C9A6A /* SLFNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFNavController.m; sourceTree = "<group>"; };
 		B04CF3B41905895600A265B5 /* Selfie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Selfie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04CF3B71905895600A265B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B04CF3B91905895600A265B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -209,6 +212,8 @@
 		B04CF3E9190589F600A265B5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B01F955B19098B8C005C9A6A /* SLFNavController.h */,
+				B01F955C19098B8C005C9A6A /* SLFNavController.m */,
 				B0F4EFBF1906E1370001F190 /* SLFSelfyVC.h */,
 				B0F4EFC01906E1370001F190 /* SLFSelfyVC.m */,
 				B0F4EFBC1906D6B20001F190 /* SLFLogInVC.h */,
@@ -329,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0F4EFC11906E1370001F190 /* SLFSelfyVC.m in Sources */,
+				B01F955D19098B8C005C9A6A /* SLFNavController.m in Sources */,
 				B0F4EFBE1906D6B20001F190 /* SLFLogInVC.m in Sources */,
 				B04CF3C81905895600A265B5 /* SLFAppDelegate.m in Sources */,
 				B04CF3F71905A5E600A265B5 /* SLFTableViewCell.m in Sources */,

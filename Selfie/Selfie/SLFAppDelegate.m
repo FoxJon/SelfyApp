@@ -10,10 +10,9 @@
 #import "SLFTableVC.h"
 #import "SLFLogInVC.h"
 #import "SLFSelfyVC.h"
+#import "SLFNavController.h"
 
 @implementation SLFAppDelegate
-
-//hello
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,7 +24,13 @@
     
     [PFUser enableAutomaticUser];
 
-    self.window.rootViewController = [[SLFSelfyVC alloc]initWithNibName:nil bundle:nil];
+   // self.window.rootViewController = [[SLFTableVC alloc]initWithNibName:nil bundle:nil];
+    
+    SLFNavController * nc = [[SLFNavController alloc]init];
+    self.window.rootViewController = nc;
+    
+    [nc addSLFLogInVC:[[SLFLogInVC alloc]initWithNibName:nil bundle:nil]];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
