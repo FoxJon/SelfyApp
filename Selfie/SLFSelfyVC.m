@@ -7,6 +7,7 @@
 //
 
 #import "SLFSelfyVC.h"
+#import <Parse/Parse.h>
 
 @interface SLFSelfyVC () <UITextViewDelegate>
 
@@ -47,7 +48,7 @@
         
         UIButton *submitButton = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 400, 100, 40)];
         [submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
-        // [submitButton addTarget:self action:@selector(newUser)forControlEvents:UIControlEventTouchUpInside];
+        [submitButton addTarget:self action:@selector(newSelfy)forControlEvents:UIControlEventTouchUpInside];
         submitButton.backgroundColor = [UIColor blueColor];
         submitButton.layer.cornerRadius = 6;
         [newForm addSubview:submitButton];
@@ -110,6 +111,17 @@
 
 - (void)newSelfy  //called when hitting submit button
 {
+    UIImage *image = [UIImage imageNamed:@"images2"];
+    NSData *imageData = UIImagePNGRepresentation(image);
+    PFFile *imageFile = [PFFile fileWithName:@"images2.png" data:imageData];
+    
+    PFObject *userPhoto = [PFObject objectWithClassName:@"UserSelfy"];
+    userPhoto[@"images2"] = @"My Selfy!";
+    userPhoto[@"images2"] = imageFile;
+    [userPhoto saveInBackground];
+    
+    
+    
     //PFObject class name "UserSelfy"
     //put a png file inside app
     //PFFile

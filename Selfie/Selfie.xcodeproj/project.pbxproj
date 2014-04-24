@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01F955F1909D165005C9A6A /* images2.png in Resources */ = {isa = PBXBuildFile; fileRef = B01F955E1909D165005C9A6A /* images2.png */; };
 		B04CF3B81905895600A265B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3B71905895600A265B5 /* Foundation.framework */; };
 		B04CF3BA1905895600A265B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3B91905895600A265B5 /* CoreGraphics.framework */; };
 		B04CF3BC1905895600A265B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3BB1905895600A265B5 /* UIKit.framework */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B01F955E1909D165005C9A6A /* images2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images2.png; sourceTree = "<group>"; };
 		B04CF3B41905895600A265B5 /* Selfie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Selfie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04CF3B71905895600A265B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B04CF3B91905895600A265B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -177,6 +179,7 @@
 		B04CF3BE1905895600A265B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B01F955E1909D165005C9A6A /* images2.png */,
 				B06A042F1906F40500CFBF6B /* camera.png */,
 				B04CF3EE19059CB300A265B5 /* AliHoushmand.png */,
 				B04CF3EF19059CB300A265B5 /* JonFox.png */,
@@ -307,6 +310,7 @@
 			files = (
 				B04CF3F019059CB300A265B5 /* AliHoushmand.png in Resources */,
 				B06A04301906F40500CFBF6B /* camera.png in Resources */,
+				B01F955F1909D165005C9A6A /* images2.png in Resources */,
 				B04CF3F119059CB300A265B5 /* JonFox.png in Resources */,
 				B04CF3C21905895600A265B5 /* InfoPlist.strings in Resources */,
 				B04CF3CA1905895600A265B5 /* Images.xcassets in Resources */,

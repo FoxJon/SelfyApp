@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import "SLFTableVC.h"
 
-@interface SLFLogInVC ()
+@interface SLFLogInVC () 
 
 @end
 
@@ -18,6 +18,7 @@
 {
     UITextField * userNameLabel;
     UITextField * passwordLabel;
+    UIActivityIndicatorView * spinner;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,6 +37,7 @@
         userNameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 175, 200, 40)];
         userNameLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         userNameLabel.layer.cornerRadius = 6;
+        userNameLabel.delegate = self;
         userNameLabel.leftViewMode = UITextFieldViewModeAlways;
         userNameLabel.placeholder = @" Enter User Name here";
         userNameLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
@@ -47,6 +49,7 @@
         passwordLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 250, 200, 40)];
         passwordLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         passwordLabel.layer.cornerRadius = 6;
+        passwordLabel.delegate = self;
         passwordLabel.leftViewMode = UITextFieldViewModeAlways;
         passwordLabel.placeholder = @" Enter User Name here";
         passwordLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
@@ -107,22 +110,34 @@
     userNameLabel.text = nil;
     passwordLabel.text = nil;
     
-    //UIActivityIndicatorView
-    //addsubview to something somewhere
-    //run method [start...   ]
     
+    
+    spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 400);
+    spinner.hidesWhenStopped = YES;
+    [spinner setColor:[UIColor orangeColor]];
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
     
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error == nil)
         {
             self.navigationController.navigationBarHidden = NO;
             self.navigationController.viewControllers = @[[[SLFTableVC alloc]initWithStyle:UITableViewStylePlain]];
+            
         }else{
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"ERROR" message: @"Please enter username and password!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alert show];
+            [spinner removeFromSuperview];
+            //[alert release];
+            
 //            error.userInfo[@"error"];
 //            UIAlertView with message
             
             //activity indicator remove
         }
+        
+
    }];
 }
 
