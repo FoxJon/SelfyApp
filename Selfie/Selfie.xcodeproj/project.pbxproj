@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B04CF3B81905895600A265B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3B71905895600A265B5 /* Foundation.framework */; };
+		B04CF3BA1905895600A265B5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3B91905895600A265B5 /* CoreGraphics.framework */; };
+		B04CF3BC1905895600A265B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3BB1905895600A265B5 /* UIKit.framework */; };
+		B04CF3C21905895600A265B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B04CF3C01905895600A265B5 /* InfoPlist.strings */; };
+		B04CF3C41905895600A265B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B04CF3C31905895600A265B5 /* main.m */; };
+		B04CF3C81905895600A265B5 /* SLFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B04CF3C71905895600A265B5 /* SLFAppDelegate.m */; };
+		B04CF3CA1905895600A265B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B04CF3C91905895600A265B5 /* Images.xcassets */; };
+		B04CF3D11905895600A265B5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3D01905895600A265B5 /* XCTest.framework */; };
+		B04CF3D21905895600A265B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3B71905895600A265B5 /* Foundation.framework */; };
+		B04CF3D31905895600A265B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04CF3BB1905895600A265B5 /* UIKit.framework */; };
+		B04CF3DB1905895600A265B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B04CF3D91905895600A265B5 /* InfoPlist.strings */; };
+		B04CF3DD1905895600A265B5 /* SelfieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B04CF3DC1905895600A265B5 /* SelfieTests.m */; };
+		B04CF3E81905898600A265B5 /* SLFTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B04CF3E71905898600A265B5 /* SLFTableVC.m */; };
+		B04CF3F019059CB300A265B5 /* AliHoushmand.png in Resources */ = {isa = PBXBuildFile; fileRef = B04CF3EE19059CB300A265B5 /* AliHoushmand.png */; };
+		B04CF3F119059CB300A265B5 /* JonFox.png in Resources */ = {isa = PBXBuildFile; fileRef = B04CF3EF19059CB300A265B5 /* JonFox.png */; };
+		B04CF3F71905A5E600A265B5 /* SLFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B04CF3F61905A5E600A265B5 /* SLFTableViewCell.m */; };
+		B06A04301906F40500CFBF6B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = B06A042F1906F40500CFBF6B /* camera.png */; };
+		B0F4EFA91906B88F0001F190 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFA81906B88F0001F190 /* Parse.framework */; };
+		B0F4EFAB1906BD280001F190 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFAA1906BD280001F190 /* AudioToolbox.framework */; };
+		B0F4EFAD1906BD300001F190 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFAC1906BD300001F190 /* CFNetwork.framework */; };
+		B0F4EFAF1906BD3E0001F190 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFAE1906BD3E0001F190 /* CoreLocation.framework */; };
+		B0F4EFB11906BD620001F190 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFB01906BD620001F190 /* libz.1.1.3.dylib */; };
+		B0F4EFB31906BD720001F190 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFB21906BD720001F190 /* MobileCoreServices.framework */; };
+		B0F4EFB51906BD7C0001F190 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFB41906BD7C0001F190 /* QuartzCore.framework */; };
+		B0F4EFB71906BD860001F190 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFB61906BD860001F190 /* Security.framework */; };
+		B0F4EFB91906BD8D0001F190 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFB81906BD8D0001F190 /* SystemConfiguration.framework */; };
+		B0F4EFBB1906BDB40001F190 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFBA1906BDB40001F190 /* StoreKit.framework */; };
+		B0F4EFBE1906D6B20001F190 /* SLFLogInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F4EFBD1906D6B20001F190 /* SLFLogInVC.m */; };
+		B0F4EFC11906E1370001F190 /* SLFSelfyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F4EFC01906E1370001F190 /* SLFSelfyVC.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B04CF3D41905895600A265B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B04CF3AC1905895600A265B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B04CF3B31905895600A265B5;
+			remoteInfo = Selfie;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B04CF3B41905895600A265B5 /* Selfie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Selfie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B04CF3B71905895600A265B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B04CF3B91905895600A265B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B04CF3BB1905895600A265B5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B04CF3BF1905895600A265B5 /* Selfie-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Selfie-Info.plist"; sourceTree = "<group>"; };
+		B04CF3C11905895600A265B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B04CF3C31905895600A265B5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B04CF3C51905895600A265B5 /* Selfie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Selfie-Prefix.pch"; sourceTree = "<group>"; };
+		B04CF3C61905895600A265B5 /* SLFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLFAppDelegate.h; sourceTree = "<group>"; };
+		B04CF3C71905895600A265B5 /* SLFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLFAppDelegate.m; sourceTree = "<group>"; };
+		B04CF3C91905895600A265B5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B04CF3CF1905895600A265B5 /* SelfieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SelfieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B04CF3D01905895600A265B5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B04CF3D81905895600A265B5 /* SelfieTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SelfieTests-Info.plist"; sourceTree = "<group>"; };
+		B04CF3DA1905895600A265B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B04CF3DC1905895600A265B5 /* SelfieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelfieTests.m; sourceTree = "<group>"; };
+		B04CF3E61905898600A265B5 /* SLFTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFTableVC.h; sourceTree = "<group>"; };
+		B04CF3E71905898600A265B5 /* SLFTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFTableVC.m; sourceTree = "<group>"; };
+		B04CF3EE19059CB300A265B5 /* AliHoushmand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AliHoushmand.png; sourceTree = "<group>"; };
+		B04CF3EF19059CB300A265B5 /* JonFox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JonFox.png; sourceTree = "<group>"; };
+		B04CF3F51905A5E600A265B5 /* SLFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFTableViewCell.h; sourceTree = "<group>"; };
+		B04CF3F61905A5E600A265B5 /* SLFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFTableViewCell.m; sourceTree = "<group>"; };
+		B06A042F1906F40500CFBF6B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		B0F4EFA81906B88F0001F190 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		B0F4EFAA1906BD280001F190 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B0F4EFAC1906BD300001F190 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B0F4EFAE1906BD3E0001F190 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B0F4EFB01906BD620001F190 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		B0F4EFB21906BD720001F190 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B0F4EFB41906BD7C0001F190 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B0F4EFB61906BD860001F190 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B0F4EFB81906BD8D0001F190 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B0F4EFBA1906BDB40001F190 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B0F4EFBC1906D6B20001F190 /* SLFLogInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFLogInVC.h; sourceTree = "<group>"; };
+		B0F4EFBD1906D6B20001F190 /* SLFLogInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFLogInVC.m; sourceTree = "<group>"; };
+		B0F4EFBF1906E1370001F190 /* SLFSelfyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFSelfyVC.h; sourceTree = "<group>"; };
+		B0F4EFC01906E1370001F190 /* SLFSelfyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFSelfyVC.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B04CF3B11905895600A265B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0F4EFBB1906BDB40001F190 /* StoreKit.framework in Frameworks */,
+				B0F4EFB91906BD8D0001F190 /* SystemConfiguration.framework in Frameworks */,
+				B0F4EFB71906BD860001F190 /* Security.framework in Frameworks */,
+				B0F4EFB51906BD7C0001F190 /* QuartzCore.framework in Frameworks */,
+				B0F4EFB31906BD720001F190 /* MobileCoreServices.framework in Frameworks */,
+				B0F4EFB11906BD620001F190 /* libz.1.1.3.dylib in Frameworks */,
+				B0F4EFAF1906BD3E0001F190 /* CoreLocation.framework in Frameworks */,
+				B0F4EFAD1906BD300001F190 /* CFNetwork.framework in Frameworks */,
+				B0F4EFAB1906BD280001F190 /* AudioToolbox.framework in Frameworks */,
+				B04CF3BA1905895600A265B5 /* CoreGraphics.framework in Frameworks */,
+				B04CF3BC1905895600A265B5 /* UIKit.framework in Frameworks */,
+				B0F4EFA91906B88F0001F190 /* Parse.framework in Frameworks */,
+				B04CF3B81905895600A265B5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B04CF3CC1905895600A265B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04CF3D11905895600A265B5 /* XCTest.framework in Frameworks */,
+				B04CF3D31905895600A265B5 /* UIKit.framework in Frameworks */,
+				B04CF3D21905895600A265B5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B04CF3AB1905895600A265B5 = {
+			isa = PBXGroup;
+			children = (
+				B04CF3E9190589F600A265B5 /* Controllers */,
+				B04CF3BD1905895600A265B5 /* Selfie */,
+				B04CF3D61905895600A265B5 /* SelfieTests */,
+				B04CF3B61905895600A265B5 /* Frameworks */,
+				B04CF3B51905895600A265B5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B04CF3B51905895600A265B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B04CF3B41905895600A265B5 /* Selfie.app */,
+				B04CF3CF1905895600A265B5 /* SelfieTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B04CF3B61905895600A265B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0F4EFBA1906BDB40001F190 /* StoreKit.framework */,
+				B0F4EFB81906BD8D0001F190 /* SystemConfiguration.framework */,
+				B0F4EFB61906BD860001F190 /* Security.framework */,
+				B0F4EFB41906BD7C0001F190 /* QuartzCore.framework */,
+				B0F4EFB21906BD720001F190 /* MobileCoreServices.framework */,
+				B0F4EFB01906BD620001F190 /* libz.1.1.3.dylib */,
+				B0F4EFAE1906BD3E0001F190 /* CoreLocation.framework */,
+				B0F4EFAC1906BD300001F190 /* CFNetwork.framework */,
+				B0F4EFAA1906BD280001F190 /* AudioToolbox.framework */,
+				B0F4EFA81906B88F0001F190 /* Parse.framework */,
+				B04CF3B71905895600A265B5 /* Foundation.framework */,
+				B04CF3B91905895600A265B5 /* CoreGraphics.framework */,
+				B04CF3BB1905895600A265B5 /* UIKit.framework */,
+				B04CF3D01905895600A265B5 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B04CF3BD1905895600A265B5 /* Selfie */ = {
+			isa = PBXGroup;
+			children = (
+				B04CF3C61905895600A265B5 /* SLFAppDelegate.h */,
+				B04CF3C71905895600A265B5 /* SLFAppDelegate.m */,
+				B04CF3C91905895600A265B5 /* Images.xcassets */,
+				B04CF3BE1905895600A265B5 /* Supporting Files */,
+			);
+			path = Selfie;
+			sourceTree = "<group>";
+		};
+		B04CF3BE1905895600A265B5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B06A042F1906F40500CFBF6B /* camera.png */,
+				B04CF3EE19059CB300A265B5 /* AliHoushmand.png */,
+				B04CF3EF19059CB300A265B5 /* JonFox.png */,
+				B04CF3BF1905895600A265B5 /* Selfie-Info.plist */,
+				B04CF3C01905895600A265B5 /* InfoPlist.strings */,
+				B04CF3C31905895600A265B5 /* main.m */,
+				B04CF3C51905895600A265B5 /* Selfie-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B04CF3D61905895600A265B5 /* SelfieTests */ = {
+			isa = PBXGroup;
+			children = (
+				B04CF3DC1905895600A265B5 /* SelfieTests.m */,
+				B04CF3D71905895600A265B5 /* Supporting Files */,
+			);
+			path = SelfieTests;
+			sourceTree = "<group>";
+		};
+		B04CF3D71905895600A265B5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B04CF3D81905895600A265B5 /* SelfieTests-Info.plist */,
+				B04CF3D91905895600A265B5 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B04CF3E9190589F600A265B5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B0F4EFBF1906E1370001F190 /* SLFSelfyVC.h */,
+				B0F4EFC01906E1370001F190 /* SLFSelfyVC.m */,
+				B0F4EFBC1906D6B20001F190 /* SLFLogInVC.h */,
+				B0F4EFBD1906D6B20001F190 /* SLFLogInVC.m */,
+				B04CF3E61905898600A265B5 /* SLFTableVC.h */,
+				B04CF3E71905898600A265B5 /* SLFTableVC.m */,
+				B04CF3EA19058AAB00A265B5 /* TableViewCell */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B04CF3EA19058AAB00A265B5 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B04CF3F51905A5E600A265B5 /* SLFTableViewCell.h */,
+				B04CF3F61905A5E600A265B5 /* SLFTableViewCell.m */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B04CF3B31905895600A265B5 /* Selfie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B04CF3E01905895600A265B5 /* Build configuration list for PBXNativeTarget "Selfie" */;
+			buildPhases = (
+				B04CF3B01905895600A265B5 /* Sources */,
+				B04CF3B11905895600A265B5 /* Frameworks */,
+				B04CF3B21905895600A265B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Selfie;
+			productName = Selfie;
+			productReference = B04CF3B41905895600A265B5 /* Selfie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B04CF3CE1905895600A265B5 /* SelfieTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B04CF3E31905895600A265B5 /* Build configuration list for PBXNativeTarget "SelfieTests" */;
+			buildPhases = (
+				B04CF3CB1905895600A265B5 /* Sources */,
+				B04CF3CC1905895600A265B5 /* Frameworks */,
+				B04CF3CD1905895600A265B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B04CF3D51905895600A265B5 /* PBXTargetDependency */,
+			);
+			name = SelfieTests;
+			productName = SelfieTests;
+			productReference = B04CF3CF1905895600A265B5 /* SelfieTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B04CF3AC1905895600A265B5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SLF;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Jon Fox";
+				TargetAttributes = {
+					B04CF3CE1905895600A265B5 = {
+						TestTargetID = B04CF3B31905895600A265B5;
+					};
+				};
+			};
+			buildConfigurationList = B04CF3AF1905895600A265B5 /* Build configuration list for PBXProject "Selfie" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B04CF3AB1905895600A265B5;
+			productRefGroup = B04CF3B51905895600A265B5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B04CF3B31905895600A265B5 /* Selfie */,
+				B04CF3CE1905895600A265B5 /* SelfieTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B04CF3B21905895600A265B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04CF3F019059CB300A265B5 /* AliHoushmand.png in Resources */,
+				B06A04301906F40500CFBF6B /* camera.png in Resources */,
+				B04CF3F119059CB300A265B5 /* JonFox.png in Resources */,
+				B04CF3C21905895600A265B5 /* InfoPlist.strings in Resources */,
+				B04CF3CA1905895600A265B5 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B04CF3CD1905895600A265B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04CF3DB1905895600A265B5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B04CF3B01905895600A265B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0F4EFC11906E1370001F190 /* SLFSelfyVC.m in Sources */,
+				B0F4EFBE1906D6B20001F190 /* SLFLogInVC.m in Sources */,
+				B04CF3C81905895600A265B5 /* SLFAppDelegate.m in Sources */,
+				B04CF3F71905A5E600A265B5 /* SLFTableViewCell.m in Sources */,
+				B04CF3E81905898600A265B5 /* SLFTableVC.m in Sources */,
+				B04CF3C41905895600A265B5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B04CF3CB1905895600A265B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B04CF3DD1905895600A265B5 /* SelfieTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B04CF3D51905895600A265B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B04CF3B31905895600A265B5 /* Selfie */;
+			targetProxy = B04CF3D41905895600A265B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B04CF3C01905895600A265B5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B04CF3C11905895600A265B5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B04CF3D91905895600A265B5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B04CF3DA1905895600A265B5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B04CF3DE1905895600A265B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B04CF3DF1905895600A265B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B04CF3E11905895600A265B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Selfie/Selfie-Prefix.pch";
+				INFOPLIST_FILE = "Selfie/Selfie-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B04CF3E21905895600A265B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Selfie/Selfie-Prefix.pch";
+				INFOPLIST_FILE = "Selfie/Selfie-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B04CF3E41905895600A265B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Selfie.app/Selfie";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Selfie/Selfie-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SelfieTests/SelfieTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B04CF3E51905895600A265B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Selfie.app/Selfie";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Selfie/Selfie-Prefix.pch";
+				INFOPLIST_FILE = "SelfieTests/SelfieTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B04CF3AF1905895600A265B5 /* Build configuration list for PBXProject "Selfie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04CF3DE1905895600A265B5 /* Debug */,
+				B04CF3DF1905895600A265B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B04CF3E01905895600A265B5 /* Build configuration list for PBXNativeTarget "Selfie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04CF3E11905895600A265B5 /* Debug */,
+				B04CF3E21905895600A265B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B04CF3E31905895600A265B5 /* Build configuration list for PBXNativeTarget "SelfieTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04CF3E41905895600A265B5 /* Debug */,
+				B04CF3E51905895600A265B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B04CF3AC1905895600A265B5 /* Project object */;
+}
