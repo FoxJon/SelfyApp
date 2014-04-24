@@ -108,6 +108,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)newSelfy  //called when hitting submit button
+{
+    //PFObject class name "UserSelfy"
+    //put a png file inside app
+    //PFFile
+}
+
 /*
 #pragma mark - Navigation
 

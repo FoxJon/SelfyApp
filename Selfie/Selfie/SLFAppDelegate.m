@@ -18,8 +18,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    [Parse setApplicationId:@"H1JHLiA7kFRmIWvtbkHDcnA1Caj4UofHxRx6UZAB"
-                 clientKey:@"dKLyXccYHUy1MXNgrdR2Sq5b1fNQoTr4clSXVd3p"];
+//    [Parse setApplicationId:@"H1JHLiA7kFRmIWvtbkHDcnA1Caj4UofHxRx6UZAB"
+//                 clientKey:@"dKLyXccYHUy1MXNgrdR2Sq5b1fNQoTr4clSXVd3p"];
+    
+    //My app key
+    [Parse setApplicationId:@"EA12PN66kpUX1ybbpJ0kNv1HptlccmCkEiH6n67p"
+                  clientKey:@"TBuBa4OH6eWgo13rdvK1zF57V9I0NL8nXQRNxpRE"];
     
     [PFUser enableAutomaticUser];
     

@@ -8,6 +8,7 @@
 
 #import "SLFLogInVC.h"
 #import <Parse/Parse.h>
+#import "SLFTableVC.h"
 
 @interface SLFLogInVC ()
 
@@ -25,7 +26,14 @@
     if (self) {
         // Custom initialization
         
-        userNameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 200, 200, 40)];
+        UILabel * title = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 50, 200, 100)];
+        title.text = @"Selfy";
+        title.font = [UIFont fontWithName:@"zapfino" size:25.0];
+        
+        title.textAlignment = 1;
+        [self.view addSubview:title];
+        
+        userNameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 175, 200, 40)];
         userNameLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         userNameLabel.layer.cornerRadius = 6;
         userNameLabel.leftViewMode = UITextFieldViewModeAlways;
@@ -36,7 +44,7 @@
 
         [self.view addSubview:userNameLabel];
 
-        passwordLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 275, 200, 40)];
+        passwordLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 250, 200, 40)];
         passwordLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         passwordLabel.layer.cornerRadius = 6;
         passwordLabel.leftViewMode = UITextFieldViewModeAlways;
@@ -48,7 +56,7 @@
         
         [self.view addSubview:passwordLabel];
         
-        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 350, 100, 40)];
+        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 325, 100, 40)];
         [submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
         [submitButton addTarget:self action:@selector(newUser) forControlEvents:UIControlEventTouchUpInside];
         submitButton.backgroundColor = [UIColor blueColor];
@@ -99,20 +107,29 @@
     userNameLabel.text = nil;
     passwordLabel.text = nil;
     
+    //UIActivityIndicatorView
+    //addsubview to something somewhere
+    //run method [start...   ]
+    
     
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error == nil) {
-            
+        if (error == nil)
+        {
+            self.navigationController.navigationBarHidden = NO;
+            self.navigationController.viewControllers = @[[[SLFTableVC alloc]initWithStyle:UITableViewStylePlain]];
         }else{
+//            error.userInfo[@"error"];
+//            UIAlertView with message
             
+            //activity indicator remove
         }
-    }];
+   }];
 }
 
 /*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+ In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
