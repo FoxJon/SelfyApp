@@ -8,6 +8,7 @@
 
 #import "SLFSelfyVC.h"
 #import <Parse/Parse.h>
+#import "SLFTableVC.h"
 
 @interface SLFSelfyVC () <UITextViewDelegate>
 
@@ -19,7 +20,7 @@
     UITextView * caption;
 }
 
--(BOOL)prefersStatusBarHidden {return YES;}
+//-(BOOL)prefersStatusBarHidden {return YES;}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,27 +29,9 @@
     if (self) {
         // Custom initialization
         
+        [self createForm];
+        
         self.view.backgroundColor = [UIColor whiteColor];
-        
-        newForm = [[UIView alloc] initWithFrame:self.view.frame];
-        [self.view addSubview:newForm];
-        
-        
-        UIImageView * imageArea = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-140), 20, 280, 280)];
-        imageArea.image = [UIImage imageNamed: @"camera.png"];
-        imageArea.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
-        imageArea.contentMode = UIViewContentModeCenter;
-        [newForm addSubview:imageArea];
-        
-        
-        caption = [[UITextView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-120), 310, 240, 80)];
-        caption.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
-        caption.textColor = [UIColor darkGrayColor];
-        caption.text = @"Enter Caption Here";
-        caption.delegate = self;
-        caption.keyboardType = UIKeyboardTypeTwitter;
-        
-        [newForm addSubview:caption];
         
         
         UIButton *submitButton = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 400, 100, 40)];
@@ -59,13 +42,13 @@
         [newForm addSubview:submitButton];
         
         
-        UIButton *CancelButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 450, 100, 40)];
-        [CancelButton setTitle:@"CANCEL" forState:UIControlStateNormal];
-        // [submitButton addTarget:self action:@selector(newUser)forControlEvents:UIControlEventTouchUpInside];
-        CancelButton.backgroundColor = [UIColor redColor];
-        CancelButton.layer.cornerRadius = 6;
-        
-        [newForm addSubview:CancelButton];
+//        UIButton *CancelButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 450, 100, 40)];
+//        [CancelButton setTitle:@"CANCEL" forState:UIControlStateNormal];
+//        // [submitButton addTarget:self action:@selector(newUser)forControlEvents:UIControlEventTouchUpInside];
+//        CancelButton.backgroundColor = [UIColor redColor];
+//        CancelButton.layer.cornerRadius = 6;
+//        
+//        [newForm addSubview:CancelButton];
         
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapScreen)];
         [self.view addGestureRecognizer:tap];
@@ -74,11 +57,42 @@
     return self;
 }
 
+-(void)createForm
+{
+    
+    newForm = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    [self.view addSubview:newForm];
+    
+    
+    UIImageView * imageArea = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-140), 20, 280, 280)];
+    imageArea.image = [UIImage imageNamed: @"camera.png"];
+    imageArea.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+    imageArea.contentMode = UIViewContentModeCenter;
+    [newForm addSubview:imageArea];
+    
+    
+    caption = [[UITextView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-120), 310, 240, 80)];
+    caption.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+    caption.textColor = [UIColor darkGrayColor];
+    caption.text = @"Enter Caption Here";
+    caption.delegate = self;
+    caption.keyboardType = UIKeyboardTypeTwitter;
+    
+    [newForm addSubview:caption];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+//    [self createForm];
+
+}
+
 -(void)tapScreen
 {
     [caption resignFirstResponder];
      [UIView animateWithDuration:0.2 animations:^{
-        newForm.frame = self.view.frame;
+        newForm.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
     }];
 }
 
@@ -96,7 +110,7 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     [UIView animateWithDuration:0.2 animations:^{
-    newForm.frame = CGRectMake(0, -KB_HEIGHT, 320, self.view.frame.size.height);
+    newForm.frame = CGRectMake(0, -150, 320, self.view.frame.size.height);
     }];
 }
 
@@ -105,8 +119,24 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    UIBarButtonItem * cancelNewSelfyButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelNewSelfy)];
+    
+    cancelNewSelfyButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = cancelNewSelfyButton;
 }
+
+-(void)cancelNewSelfy
+{
+
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -25,6 +25,7 @@
 		B04CF3F119059CB300A265B5 /* JonFox.png in Resources */ = {isa = PBXBuildFile; fileRef = B04CF3EF19059CB300A265B5 /* JonFox.png */; };
 		B04CF3F71905A5E600A265B5 /* SLFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B04CF3F61905A5E600A265B5 /* SLFTableViewCell.m */; };
 		B06A04301906F40500CFBF6B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = B06A042F1906F40500CFBF6B /* camera.png */; };
+		B0A55B16190AEB5D00E0CB80 /* SLFNewNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A55B15190AEB5D00E0CB80 /* SLFNewNavController.m */; };
 		B0F4EFA91906B88F0001F190 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFA81906B88F0001F190 /* Parse.framework */; };
 		B0F4EFAB1906BD280001F190 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFAA1906BD280001F190 /* AudioToolbox.framework */; };
 		B0F4EFAD1906BD300001F190 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFAC1906BD300001F190 /* CFNetwork.framework */; };
@@ -74,6 +75,8 @@
 		B04CF3F51905A5E600A265B5 /* SLFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFTableViewCell.h; sourceTree = "<group>"; };
 		B04CF3F61905A5E600A265B5 /* SLFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFTableViewCell.m; sourceTree = "<group>"; };
 		B06A042F1906F40500CFBF6B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		B0A55B14190AEB5D00E0CB80 /* SLFNewNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFNewNavController.h; sourceTree = "<group>"; };
+		B0A55B15190AEB5D00E0CB80 /* SLFNewNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFNewNavController.m; sourceTree = "<group>"; };
 		B0F4EFA81906B88F0001F190 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		B0F4EFAA1906BD280001F190 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B0F4EFAC1906BD300001F190 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -212,6 +215,8 @@
 		B04CF3E9190589F600A265B5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0A55B14190AEB5D00E0CB80 /* SLFNewNavController.h */,
+				B0A55B15190AEB5D00E0CB80 /* SLFNewNavController.m */,
 				B0F4EFBF1906E1370001F190 /* SLFSelfyVC.h */,
 				B0F4EFC01906E1370001F190 /* SLFSelfyVC.m */,
 				B0F4EFBC1906D6B20001F190 /* SLFLogInVC.h */,
@@ -333,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0F4EFC11906E1370001F190 /* SLFSelfyVC.m in Sources */,
+				B0A55B16190AEB5D00E0CB80 /* SLFNewNavController.m in Sources */,
 				B0F4EFBE1906D6B20001F190 /* SLFLogInVC.m in Sources */,
 				B04CF3C81905895600A265B5 /* SLFAppDelegate.m in Sources */,
 				B04CF3F71905A5E600A265B5 /* SLFTableViewCell.m in Sources */,

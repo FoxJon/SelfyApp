@@ -9,6 +9,7 @@
 #import "SLFTableVC.h"
 #import "SLFTableViewCell.h"
 #import "SLFSelfyVC.h"
+#import "SLFNewNavController.h"
 
 #import <Parse/Parse.h>
 
@@ -20,7 +21,6 @@
 {
 NSArray * selfies;
 }
--(BOOL)prefersStatusBarHidden {return YES;}
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -84,14 +84,16 @@ NSArray * selfies;
 {
     SLFSelfyVC * newSelfyVC = [[SLFSelfyVC alloc] initWithNibName:nil bundle:nil];
     
-   UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:newSelfyVC];
+   SLFNewNavController * nc = [[SLFNewNavController alloc]initWithRootViewController:newSelfyVC];
+    nc.navigationBar.barTintColor = [UIColor blueColor];
+    nc.navigationBar.translucent = NO;
     
     [self.navigationController presentViewController:nc animated:YES
  completion:^{
      
  }];
+    
 }
-
 
 - (void)didReceiveMemoryWarning
 {
