@@ -27,6 +27,9 @@
     if (self) {
         // Custom initialization
         
+       // UIView * newForm = [[UIView alloc]initWithFrame:self.view.frame];
+        
+        
         UILabel * title = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 50, 200, 100)];
         title.text = @"Selfy";
         title.font = [UIFont fontWithName:@"zapfino" size:25.0];
@@ -60,7 +63,7 @@
         [self.view addSubview:passwordLabel];
         
         UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 325, 100, 40)];
-        [submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
+        [submitButton setTitle:@"SIGN IN" forState:UIControlStateNormal];
         [submitButton addTarget:self action:@selector(newUser) forControlEvents:UIControlEventTouchUpInside];
         submitButton.backgroundColor = [UIColor blueColor];
         submitButton.layer.cornerRadius = 6;
@@ -110,7 +113,8 @@
     userNameLabel.text = nil;
     passwordLabel.text = nil;
     
-    
+    [passwordLabel resignFirstResponder];
+    [userNameLabel resignFirstResponder];
     
     spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(160, 400);
@@ -119,7 +123,12 @@
     [self.view addSubview:spinner];
     [spinner startAnimating];
     
+    //remove auto caps
+    //animate up login form
+    
+//    userNameLabel.te
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+ 
         if (error == nil)
         {
             self.navigationController.navigationBarHidden = NO;
@@ -127,14 +136,11 @@
             
         }else{
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"ERROR" message: @"Please enter username and password!" delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alert show];
+            NSString * errorDescription = error.userInfo[@"error"];
+            
             [spinner removeFromSuperview];
-            //[alert release];
-            
-//            error.userInfo[@"error"];
-//            UIAlertView with message
-            
-            //activity indicator remove
+
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"ERROR" message: errorDescription delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alert show];
         }
         
 

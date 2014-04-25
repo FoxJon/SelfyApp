@@ -113,12 +113,14 @@
 {
     UIImage *image = [UIImage imageNamed:@"images2"];
     NSData *imageData = UIImagePNGRepresentation(image);
-    PFFile *imageFile = [PFFile fileWithName:@"images2.png" data:imageData];
+    PFFile *imageFile = [PFFile fileWithName:@"images2.png" data:imageData]; //the file name on parse
     
     PFObject *userPhoto = [PFObject objectWithClassName:@"UserSelfy"];
-    userPhoto[@"images2"] = @"My Selfy!";
-    userPhoto[@"images2"] = imageFile;
-    [userPhoto saveInBackground];
+    
+    userPhoto[@"caption"] = caption.text;
+    userPhoto[@"images"] = imageFile;
+    
+    [userPhoto saveInBackground];          //if this was just "save", nothing else would continue until done
     
     
     

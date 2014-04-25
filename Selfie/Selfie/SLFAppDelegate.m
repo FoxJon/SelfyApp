@@ -27,7 +27,7 @@
     
     [PFUser enableAutomaticUser];
     
- //   UINavigationController * nc;
+   UINavigationController * nc;
     
     PFUser * user = [PFUser currentUser];
     
@@ -36,15 +36,15 @@
     //to test
     username = nil;
     
-//    if (username == nil) {
-//        nc = [[UINavigationController alloc]initWithRootViewController:[[SLFLogInVC alloc]initWithNibName:nil bundle:nil]];
-//        nc.navigationBarHidden = YES;
-//
-//    }else{
-//        nc = [[UINavigationController alloc]initWithRootViewController:[[SLFTableVC alloc]initWithStyle:UITableViewStylePlain]];    }
+    if (username == nil) {
+        nc = [[UINavigationController alloc]initWithRootViewController:[[SLFLogInVC alloc]initWithNibName:nil bundle:nil]];
+        nc.navigationBarHidden = YES;
+
+    }else{
+        nc = [[UINavigationController alloc]initWithRootViewController:[[SLFTableVC alloc]initWithStyle:UITableViewStylePlain]];    }
     
-    self.window.rootViewController = [[SLFSelfyVC alloc]initWithNibName:nil bundle:nil];
-    //self.window.rootViewController = nc;
+//  self.window.rootViewController = [[SLFSelfyVC alloc]initWithNibName:nil bundle:nil];
+    self.window.rootViewController = nc;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

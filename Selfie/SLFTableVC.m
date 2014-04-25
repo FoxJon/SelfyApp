@@ -55,24 +55,25 @@ NSArray * selfies;
     self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem * addNewSelfyButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openNewSelfy)];
+    self.navigationItem.rightBarButtonItem = addNewSelfyButton;
     
-    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-    header.backgroundColor = [UIColor lightGrayColor];
-    self.tableView.tableHeaderView = header;
-    
-    UILabel *selfyLabel = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-25), 0, 100, 40)];
-    selfyLabel.text = @"SELFY";
-    [header addSubview:selfyLabel];
-
-    UIButton *addButton = [UIButton buttonWithType:
-                               UIButtonTypeContactAdd];
-    [addButton setFrame:CGRectMake(200, 0, 200, 40)];
-    [header addSubview:addButton];
-    
-    UILabel *settings = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 100, 40)];
-    settings.text = @"\u2699";
-    [header addSubview:settings];
+//    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+//    header.backgroundColor = [UIColor lightGrayColor];
+//    self.tableView.tableHeaderView = header;
+//    
+//    UILabel *selfyLabel = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-25), 0, 100, 40)];
+//    selfyLabel.text = @"SELFY";
+//    [header addSubview:selfyLabel];
+//
+//    UIButton *addButton = [UIButton buttonWithType:
+//                               UIButtonTypeContactAdd];
+//    [addButton setFrame:CGRectMake(200, 0, 200, 40)];
+//    [header addSubview:addButton];
+//    
+//    UILabel *settings = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 100, 40)];
+//    settings.text = @"\u2699";
+//    [header addSubview:settings];
 
 }
 
