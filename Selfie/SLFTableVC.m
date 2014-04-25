@@ -8,6 +8,7 @@
 
 #import "SLFTableVC.h"
 #import "SLFTableViewCell.h"
+#import "SLFSelfyVC.h"
 
 #import <Parse/Parse.h>
 
@@ -19,6 +20,8 @@
 {
 NSArray * selfies;
 }
+-(BOOL)prefersStatusBarHidden {return YES;}
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -76,6 +79,19 @@ NSArray * selfies;
 //    [header addSubview:settings];
 
 }
+
+-(void)openNewSelfy
+{
+    SLFSelfyVC * newSelfyVC = [[SLFSelfyVC alloc] initWithNibName:nil bundle:nil];
+    
+   UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:newSelfyVC];
+    
+    [self.navigationController presentViewController:nc animated:YES
+ completion:^{
+     
+ }];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -161,7 +177,6 @@ NSArray * selfies;
 }
 */
 
--(BOOL)prefersStatusBarHidden {return YES;}
 
 
 @end

@@ -20,6 +20,7 @@
     UITextField * passwordLabel;
     UIActivityIndicatorView * spinner;
 }
+-(BOOL)prefersStatusBarHidden {return YES;}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,6 +81,9 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     textField.placeholder = @"";
     textField.textColor = [UIColor blackColor];
+    textField.autocorrectionType = FALSE;
+    textField.autocapitalizationType = FALSE;
+
     
 }
 
@@ -110,6 +114,8 @@
     user.username = userNameLabel.text;
     user.password = passwordLabel.text;
     
+
+    
     userNameLabel.text = nil;
     passwordLabel.text = nil;
     
@@ -122,11 +128,8 @@
     [spinner setColor:[UIColor orangeColor]];
     [self.view addSubview:spinner];
     [spinner startAnimating];
+      
     
-    //remove auto caps
-    //animate up login form
-    
-//    userNameLabel.te
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
  
         if (error == nil)

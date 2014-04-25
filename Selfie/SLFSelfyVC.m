@@ -19,11 +19,16 @@
     UITextView * caption;
 }
 
+-(BOOL)prefersStatusBarHidden {return YES;}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        self.view.backgroundColor = [UIColor whiteColor];
         
         newForm = [[UIView alloc] initWithFrame:self.view.frame];
         [self.view addSubview:newForm];
