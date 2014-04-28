@@ -153,12 +153,22 @@
     NSData *imageData = UIImagePNGRepresentation(imageView.image);
     PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData]; //the file name on parse
     
-    PFObject *userPhoto = [PFObject objectWithClassName:@"UserSelfy"];
+    PFObject *newSelfy = [PFObject objectWithClassName:@"UserSelfy"];
     
-    userPhoto[@"caption"] = caption.text;
-    userPhoto[@"images"] = imageFile;
+    newSelfy[@"caption"] = caption.text;
+    newSelfy[@"images"] = imageFile;
+    newSelfy[@"parent"] = [PFUser currentUser];
+
+    UIActivityIndicatorView * spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 390);
+    spinner.hidesWhenStopped = YES;
+    [spinner setColor:[UIColor orangeColor]];
+    [newForm addSubview:spinner];
+    [spinner startAnimating];
     
-    [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [newSelfy saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+       
+        [spinner removeFromSuperview];
         [self cancelNewSelfy];  //if this was just "save", nothing else would continue until done
     }];
     

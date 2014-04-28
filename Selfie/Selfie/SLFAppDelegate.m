@@ -34,7 +34,7 @@
     NSString * username = user.username;
     
     //to test
-    //username = nil;
+    username = nil;
     
     if (username == nil) {
         nc = [[UINavigationController alloc]initWithRootViewController:[[SLFLogInVC alloc]initWithNibName:nil bundle:nil]];
