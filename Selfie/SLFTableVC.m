@@ -122,6 +122,8 @@ NSArray * selfies;
     //after user connected to selfy, filter only your user's selfies
 
     PFQuery *query = [PFQuery queryWithClassName:@"UserSelfy"];
+    [query orderByDescending:@"createdAt"];
+//    [query whereKey:@"username" equalTo:@"123"];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 

@@ -154,18 +154,15 @@
     PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData]; //the file name on parse
     
     PFObject *userPhoto = [PFObject objectWithClassName:@"UserSelfy"];
+//    PFObject *username = [PFUser currentUser];
     
     userPhoto[@"caption"] = caption.text;
     userPhoto[@"images"] = imageFile;
+    userPhoto[@"username"] = @"test";
     
     [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [self cancelNewSelfy];  //if this was just "save", nothing else would continue until done
     }];
-    
-    
-    //PFObject class name "UserSelfy"
-    //put a png file inside app
-    //PFFile
 }
 
 /*
