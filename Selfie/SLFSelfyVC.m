@@ -65,9 +65,9 @@
     
     
     UIImageView * imageArea = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-140), 20, 280, 280)];
-    imageArea.image = [UIImage imageNamed: @"camera.png"];
+    imageArea.image = [UIImage imageNamed: @"BF049.png"];
     imageArea.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
-    imageArea.contentMode = UIViewContentModeCenter;
+    imageArea.contentMode = UIViewContentModeScaleAspectFit;
     [newForm addSubview:imageArea];
     
     
@@ -163,6 +163,8 @@
     //put a png file inside app
     //PFFile
 }
+
+
 
 /*
 #pragma mark - Navigation
