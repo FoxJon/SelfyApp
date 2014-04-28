@@ -18,6 +18,7 @@
 {
     UIView * newForm;
     UITextView * caption;
+    UIImageView * imageView;
 }
 
 //-(BOOL)prefersStatusBarHidden {return YES;}
@@ -64,17 +65,17 @@
     [self.view addSubview:newForm];
     
     
-    UIImageView * imageArea = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-140), 20, 280, 280)];
-    imageArea.image = [UIImage imageNamed: @"camera.png"];
-    imageArea.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
-    imageArea.contentMode = UIViewContentModeCenter;
-    [newForm addSubview:imageArea];
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-140), 20, 280, 280)];
+    imageView.image = [UIImage imageNamed: @"BF049b.png"];
+    imageView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [newForm addSubview:imageView];
     
     
     caption = [[UITextView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-120), 310, 240, 80)];
     caption.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
     caption.textColor = [UIColor darkGrayColor];
-    caption.text = @"Enter Caption Here";
+ //   caption.text = @"Enter Caption Here";
     caption.delegate = self;
     caption.keyboardType = UIKeyboardTypeTwitter;
     
@@ -146,17 +147,20 @@
 
 - (void)newSelfy  //called when hitting submit button
 {
-    UIImage *image = [UIImage imageNamed:@"images2"];
-    NSData *imageData = UIImagePNGRepresentation(image);
-    PFFile *imageFile = [PFFile fileWithName:@"images2.png" data:imageData]; //the file name on parse
+    //connect current user to newSelfy as parent (parse/objects/relational data)
+    
+ //   UIImage *image = [UIImage imageNamed:@"images2"];
+    NSData *imageData = UIImagePNGRepresentation(imageView.image);
+    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData]; //the file name on parse
     
     PFObject *userPhoto = [PFObject objectWithClassName:@"UserSelfy"];
     
     userPhoto[@"caption"] = caption.text;
     userPhoto[@"images"] = imageFile;
     
-    [userPhoto saveInBackground];          //if this was just "save", nothing else would continue until done
-    
+    [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self cancelNewSelfy];  //if this was just "save", nothing else would continue until done
+    }];
     
     
     //PFObject class name "UserSelfy"

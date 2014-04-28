@@ -40,7 +40,7 @@
         selfyUserID = [[UILabel alloc]initWithFrame:CGRectMake(20, 360, 100, 40)];
         selfyUserID.backgroundColor = [UIColor clearColor];
         selfyUserID.textColor = [UIColor whiteColor];
-        selfyUserID.text = @"USER NAME:";
+ //       selfyUserID.text = @"USER NAME:";
         [self.contentView addSubview:selfyUserID];
         
     }
@@ -59,23 +59,36 @@
     // Configure the view for the selected state
 }
 
--(void)setSelfyInfo:(NSDictionary *)selfyInfo
+-(void)setSelfyInfo:(PFObject *)selfyInfo
 {
     _selfyInfo = selfyInfo;
+ 
+//  selfyCaption.text = selfyInfo[@"caption"];
+    selfyCaption.text = [selfyInfo objectForKey:@"caption"];
+
+//    
+//    NSURL * imageURL = [NSURL URLWithString:selfyInfo[@"image"]];
+//    NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
+//    UIImage * image = [UIImage imageWithData:imageData];
+   
+    PFFile *imageFile = [selfyInfo objectForKey:@"images"];
     
-    NSURL * imageURL = [NSURL URLWithString:selfyInfo[@"image"]];
-    NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
-    UIImage * image = [UIImage imageWithData:imageData];
-    selfyView.image = image;
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        UIImage *image = [UIImage imageWithData:data];
+        
+        selfyView.image = image;
+        
+    } progressBlock:^(int percentDone){
+        
+    }];
     
-    selfyCaption.text = selfyInfo[@"caption"];
     
-    selfyUserID.text = selfyInfo[@"user_id"];
+//    selfyUserID.text = selfyInfo[@"user_id"];
     
-    imageURL = [NSURL URLWithString:selfyInfo[@"avatar"]];
-    imageData = [NSData dataWithContentsOfURL:imageURL];
-    image = [UIImage imageWithData:imageData];
-    avatarView.image = image;
+//    imageURL = [NSURL URLWithString:selfyInfo[@"avatar"]];
+//    imageData = [NSData dataWithContentsOfURL:imageURL];
+//    image = [UIImage imageWithData:imageData];
+//    avatarView.image = image;
 
 
     

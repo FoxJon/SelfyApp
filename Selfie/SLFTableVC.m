@@ -28,21 +28,22 @@ NSArray * selfies;
     self = [super initWithStyle:style];
     if (self) {
         
-        selfies = [@[
-                    @{
+//        selfies = @[
+//                    @{
+                        /*
                         @"image" : @"http://distilleryimage7.ak.instagram.com/6756ea06a44b11e2b62722000a1fbc10_7.jpg",
                         @"caption" : @"This is a selfy!",
                         @"user_id" : @"3n2mb23bnm",
                         @"avatar" : @"https://media.licdn.com/mpr/mpr/shrink_200_200/p/4/005/036/354/393842f.jpg",
                         @"selfy_id" : @"hjk2l32bn1"
-                    }
-                   ]mutableCopy];
-        
+                         */
+//                    }
+//                   ];
+//        
 //        PFObject *testObject = [PFObject objectWithClassName:@"UserSelfy"];
 //        testObject[@"foo"] = @"bar";
 //        [testObject saveInBackground];
         
-            
         self.tableView.rowHeight = self.tableView.frame.size.width+100;
     }
     return self;
@@ -80,6 +81,12 @@ NSArray * selfies;
 
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"view will appear");
+    [self refreshSelfies];
+}
+
 -(void)openNewSelfy
 {
     SLFSelfyVC * newSelfyVC = [[SLFSelfyVC alloc] initWithNibName:nil bundle:nil];
@@ -105,11 +112,29 @@ NSArray * selfies;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [selfies count];
 }
 
+-(void)refreshSelfies
+{
+    
+    //change order by created date. newest first
+    //after user connected to selfy, filter only your user's selfies
 
+    PFQuery *query = [PFQuery queryWithClassName:@"UserSelfy"];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
+    selfies = objects;
+        
+        [self.tableView reloadData];
+
+    }];
+    
+    
+    [self.tableView reloadData];
+}
+    
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
