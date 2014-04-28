@@ -1,24 +1,26 @@
 //
-//  SLFLogInVC.m
+//  SLFSignInVC.m
 //  Selfie
 //
-//  Created by Jonathan Fox on 4/22/14.
+//  Created by Jonathan Fox on 4/28/14.
 //  Copyright (c) 2014 Jon Fox. All rights reserved.
 //
 
-#import "SLFLogInVC.h"
+#import "SLFSignInVC.h"
 #import <Parse/Parse.h>
 #import "SLFTableVC.h"
-#import "SLFSignInVC.h"
 
-@interface SLFLogInVC () 
+
+@interface SLFSignInVC () <UITextFieldDelegate>
 
 @end
 
-@implementation SLFLogInVC
+@implementation SLFSignInVC
+
 {
     UITextField * userNameLabel;
     UITextField * passwordLabel;
+    UITextField * emailLabel;
     UIActivityIndicatorView * spinner;
     UIView *newForm;
 }
@@ -31,7 +33,7 @@
         
         newForm = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
         [self.view addSubview:newForm];
-
+        
         
         UILabel * title = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 50, 200, 100)];
         title.text = @"Selfy";
@@ -50,9 +52,9 @@
         userNameLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
         
         userNameLabel.delegate = self;
-
+        
         [newForm addSubview:userNameLabel];
-
+        
         passwordLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 250, 200, 40)];
         passwordLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         passwordLabel.layer.cornerRadius = 6;
@@ -67,28 +69,31 @@
         
         [newForm addSubview:passwordLabel];
         
-        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 325, 100, 40)];
-        [submitButton setTitle:@"LOG IN" forState:UIControlStateNormal];
+        emailLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 325, 200, 40)];
+        emailLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+        emailLabel.layer.cornerRadius = 6;
+        emailLabel.delegate = self;
+        emailLabel.leftViewMode = UITextFieldViewModeAlways;
+        emailLabel.placeholder = @" Enter email";
+        emailLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
+        emailLabel.keyboardType = UIKeyboardTypeEmailAddress;
+        emailLabel.textAlignment = 1;
+        
+        emailLabel.delegate = self;
+        
+        [newForm addSubview:emailLabel];
+        
+        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 400, 100, 40)];
+        [submitButton setTitle:@"SIGN IN" forState:UIControlStateNormal];
         [submitButton addTarget:self action:@selector(newUser) forControlEvents:UIControlEventTouchUpInside];
         submitButton.backgroundColor = [UIColor blueColor];
         submitButton.layer.cornerRadius = 6;
         [newForm addSubview:submitButton];
         
-        UIButton *newUserButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 365, 100, 40)];
-        [newUserButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:12.0]];
-        [newUserButton setTitle:@"New User?" forState:UIControlStateNormal];
-        [newUserButton addTarget:self action:@selector(signIn) forControlEvents:UIControlEventTouchUpInside];
-        [newUserButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [newForm addSubview:newUserButton];
     }
     return self;
 }
--(void)signIn
-{
-    NSLog(@"SignIn");
-    self.navigationController.viewControllers = @[[[SLFSignInVC alloc]initWithNibName:nil bundle:nil]];
-}
-                                                   
+
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
@@ -98,13 +103,15 @@
     }];
     return YES;
 }
+
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     textField.placeholder = @"";
     textField.textColor = [UIColor blackColor];
     textField.autocorrectionType = FALSE;
     textField.autocapitalizationType = FALSE;
     [UIView animateWithDuration:0.2 animations:^{
-        newForm.frame = CGRectMake(0, -80, 320, self.view.frame.size.height);
+        newForm.frame = CGRectMake(0, -115, 320, self.view.frame.size.height);
     }];
 }
 
@@ -119,7 +126,7 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,7 +142,7 @@
     user.username = userNameLabel.text;
     user.password = passwordLabel.text;
     
-
+    
     
     userNameLabel.text = nil;
     passwordLabel.text = nil;
@@ -149,10 +156,10 @@
     [spinner setColor:[UIColor orangeColor]];
     [self.view addSubview:spinner];
     [spinner startAnimating];
-      
+    
     
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
- 
+        
         if (error == nil)
         {
             self.navigationController.navigationBarHidden = NO;
@@ -163,23 +170,23 @@
             NSString * errorDescription = error.userInfo[@"error"];
             
             [spinner removeFromSuperview];
-
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"ERROR" message: errorDescription delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alert show];
         }
         
-
-   }];
+        
+    }];
 }
 
 /*
-#pragma mark - Navigation
-
+ #pragma mark - Navigation
+ 
  In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

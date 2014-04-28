@@ -39,6 +39,7 @@
 		B0F4EFBB1906BDB40001F190 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFBA1906BDB40001F190 /* StoreKit.framework */; };
 		B0F4EFBE1906D6B20001F190 /* SLFLogInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F4EFBD1906D6B20001F190 /* SLFLogInVC.m */; };
 		B0F4EFC11906E1370001F190 /* SLFSelfyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F4EFC01906E1370001F190 /* SLFSelfyVC.m */; };
+		B0FC23CC190EE89E00109A8E /* SLFSignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FC23CB190EE89E00109A8E /* SLFSignInVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		B0F4EFBD1906D6B20001F190 /* SLFLogInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFLogInVC.m; sourceTree = "<group>"; };
 		B0F4EFBF1906E1370001F190 /* SLFSelfyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFSelfyVC.h; sourceTree = "<group>"; };
 		B0F4EFC01906E1370001F190 /* SLFSelfyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFSelfyVC.m; sourceTree = "<group>"; };
+		B0FC23CA190EE89E00109A8E /* SLFSignInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFSignInVC.h; sourceTree = "<group>"; };
+		B0FC23CB190EE89E00109A8E /* SLFSignInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFSignInVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +221,8 @@
 		B04CF3E9190589F600A265B5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0FC23CA190EE89E00109A8E /* SLFSignInVC.h */,
+				B0FC23CB190EE89E00109A8E /* SLFSignInVC.m */,
 				B0A55B14190AEB5D00E0CB80 /* SLFNewNavController.h */,
 				B0A55B15190AEB5D00E0CB80 /* SLFNewNavController.m */,
 				B0F4EFBF1906E1370001F190 /* SLFSelfyVC.h */,
@@ -347,6 +352,7 @@
 				B04CF3C81905895600A265B5 /* SLFAppDelegate.m in Sources */,
 				B04CF3F71905A5E600A265B5 /* SLFTableViewCell.m in Sources */,
 				B04CF3E81905898600A265B5 /* SLFTableVC.m in Sources */,
+				B0FC23CC190EE89E00109A8E /* SLFSignInVC.m in Sources */,
 				B04CF3C41905895600A265B5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

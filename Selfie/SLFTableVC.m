@@ -62,6 +62,9 @@ NSArray * selfies;
     UIBarButtonItem * addNewSelfyButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openNewSelfy)];
     self.navigationItem.rightBarButtonItem = addNewSelfyButton;
     
+    UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(openNewSelfy)];
+    self.navigationItem.leftBarButtonItem = settingsButton;
+    
 //    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
 //    header.backgroundColor = [UIColor lightGrayColor];
 //    self.tableView.tableHeaderView = header;
