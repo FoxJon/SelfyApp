@@ -27,6 +27,8 @@
 		B04E43D3190E990600A9E5E2 /* BF049b.png in Resources */ = {isa = PBXBuildFile; fileRef = B04E43D2190E990600A9E5E2 /* BF049b.png */; };
 		B06A04301906F40500CFBF6B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = B06A042F1906F40500CFBF6B /* camera.png */; };
 		B0A55B16190AEB5D00E0CB80 /* SLFNewNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A55B15190AEB5D00E0CB80 /* SLFNewNavController.m */; };
+		B0A9B9A219101BF5000F70DB /* SLFSettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A9B9A119101BF5000F70DB /* SLFSettingsButton.m */; };
+		B0A9B9A519102758000F70DB /* SLFSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A9B9A419102758000F70DB /* SLFSettingsVC.m */; };
 		B0F4EFA91906B88F0001F190 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFA81906B88F0001F190 /* Parse.framework */; };
 		B0F4EFAB1906BD280001F190 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFAA1906BD280001F190 /* AudioToolbox.framework */; };
 		B0F4EFAD1906BD300001F190 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFAC1906BD300001F190 /* CFNetwork.framework */; };
@@ -80,6 +82,10 @@
 		B06A042F1906F40500CFBF6B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		B0A55B14190AEB5D00E0CB80 /* SLFNewNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFNewNavController.h; sourceTree = "<group>"; };
 		B0A55B15190AEB5D00E0CB80 /* SLFNewNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFNewNavController.m; sourceTree = "<group>"; };
+		B0A9B9A019101BF5000F70DB /* SLFSettingsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFSettingsButton.h; sourceTree = "<group>"; };
+		B0A9B9A119101BF5000F70DB /* SLFSettingsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFSettingsButton.m; sourceTree = "<group>"; };
+		B0A9B9A319102758000F70DB /* SLFSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFSettingsVC.h; sourceTree = "<group>"; };
+		B0A9B9A419102758000F70DB /* SLFSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFSettingsVC.m; sourceTree = "<group>"; };
 		B0F4EFA81906B88F0001F190 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		B0F4EFAA1906BD280001F190 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B0F4EFAC1906BD300001F190 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -221,6 +227,8 @@
 		B04CF3E9190589F600A265B5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0A9B9A319102758000F70DB /* SLFSettingsVC.h */,
+				B0A9B9A419102758000F70DB /* SLFSettingsVC.m */,
 				B0FC23CA190EE89E00109A8E /* SLFSignInVC.h */,
 				B0FC23CB190EE89E00109A8E /* SLFSignInVC.m */,
 				B0A55B14190AEB5D00E0CB80 /* SLFNewNavController.h */,
@@ -232,6 +240,8 @@
 				B04CF3E61905898600A265B5 /* SLFTableVC.h */,
 				B04CF3E71905898600A265B5 /* SLFTableVC.m */,
 				B04CF3EA19058AAB00A265B5 /* TableViewCell */,
+				B0A9B9A019101BF5000F70DB /* SLFSettingsButton.h */,
+				B0A9B9A119101BF5000F70DB /* SLFSettingsButton.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -348,6 +358,8 @@
 			files = (
 				B0F4EFC11906E1370001F190 /* SLFSelfyVC.m in Sources */,
 				B0A55B16190AEB5D00E0CB80 /* SLFNewNavController.m in Sources */,
+				B0A9B9A219101BF5000F70DB /* SLFSettingsButton.m in Sources */,
+				B0A9B9A519102758000F70DB /* SLFSettingsVC.m in Sources */,
 				B0F4EFBE1906D6B20001F190 /* SLFLogInVC.m in Sources */,
 				B04CF3C81905895600A265B5 /* SLFAppDelegate.m in Sources */,
 				B04CF3F71905A5E600A265B5 /* SLFTableViewCell.m in Sources */,

@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "SLFTableVC.h"
 #import "SLFSignInVC.h"
+#import "SLFNewNavController.h"
 
 @interface SLFLogInVC () 
 
@@ -84,7 +85,19 @@
 -(void)signIn
 {
     NSLog(@"SignIn");
-    self.navigationController.viewControllers = @[[[SLFSignInVC alloc]initWithNibName:nil bundle:nil]];
+    
+    SLFSignInVC * newSignUpVC = [[SLFSignInVC alloc] initWithNibName:nil bundle:nil];
+    
+    SLFNewNavController * nc = [[SLFNewNavController alloc]initWithRootViewController:newSignUpVC];
+//    UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:newSignUpVC];
+
+    nc.navigationBar.barTintColor = [UIColor blueColor];
+    nc.navigationBar.translucent = NO;
+    
+    [self.navigationController presentViewController:nc animated:YES
+                                          completion:^{
+                                              
+                                          }];
 }
                                                    
 
@@ -101,9 +114,9 @@
     textField.textColor = [UIColor blackColor];
     textField.autocorrectionType = FALSE;
     textField.autocapitalizationType = FALSE;
-    [UIView animateWithDuration:0.2 animations:^{
-        newForm.frame = CGRectMake(0, -80, 320, self.view.frame.size.height);
-    }];
+//    [UIView animateWithDuration:0.2 animations:^{
+//        newForm.frame = CGRectMake(0, -80, 320, self.view.frame.size.height);
+//    }];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -128,18 +141,18 @@
 
 - (void)logIn{
     
-    PFUser * user = [PFUser currentUser];
+//    PFUser * user = [PFUser currentUser];
+//    
+//    user.username = userNameLabel.text;
+//    user.password = passwordLabel.text;
+//    
+//
     
-    user.username = userNameLabel.text;
-    user.password = passwordLabel.text;
+//    userNameLabel.text = nil;
+//    passwordLabel.text = nil;
     
-
-    
-    userNameLabel.text = nil;
-    passwordLabel.text = nil;
-    
-    [passwordLabel resignFirstResponder];
-    [userNameLabel resignFirstResponder];
+//    [passwordLabel resignFirstResponder];
+//    [userNameLabel resignFirstResponder];
     
     spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(160, 400);
@@ -148,8 +161,13 @@
     [self.view addSubview:spinner];
     [spinner startAnimating];
       
-    [PFUser logInWithUsernameInBackground:@"username" password:@"password"
+    [PFUser logInWithUsernameInBackground:userNameLabel.text password:passwordLabel.text
     block:^(PFUser *user, NSError *error) {
+        
+        NSLog(@"logged in %@", user.username);
+        NSLog(@"current user %@", [PFUser currentUser].username);
+
+        
         if (user) {
             self.navigationController.navigationBarHidden = NO;
             self.navigationController.viewControllers = @[[[SLFTableVC alloc]initWithStyle:UITableViewStylePlain]];
@@ -158,7 +176,8 @@
             
             [spinner removeFromSuperview];
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"ERROR" message: errorDescription delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alert show];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"ERROR" message: errorDescription delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
         }
     }];
  

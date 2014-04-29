@@ -10,6 +10,8 @@
 #import "SLFTableViewCell.h"
 #import "SLFSelfyVC.h"
 #import "SLFNewNavController.h"
+#import "SLFSettingsButton.h"
+#import "SLFSettingsVC.h"
 
 #import <Parse/Parse.h>
 
@@ -20,6 +22,7 @@
 @implementation SLFTableVC
 {
 NSArray * selfies;
+
 }
 
 
@@ -62,8 +65,15 @@ NSArray * selfies;
     UIBarButtonItem * addNewSelfyButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openNewSelfy)];
     self.navigationItem.rightBarButtonItem = addNewSelfyButton;
     
-    UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(openNewSelfy)];
+    UIButton * settingsView = [[UIButton alloc]initWithFrame:CGRectMake(10, 10, 10, 10)];
+    settingsView.backgroundColor = [UIColor redColor];
+    [settingsView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithCustomView:settingsView];
     self.navigationItem.leftBarButtonItem = settingsButton;
+    
+    
     
 //    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
 //    header.backgroundColor = [UIColor lightGrayColor];
@@ -83,6 +93,20 @@ NSArray * selfies;
 //    [header addSubview:settings];
 
 }
+-(void)openSettings
+{
+    SLFSettingsVC * newSettingsVC = [[SLFSettingsVC alloc] initWithNibName:nil bundle:nil];
+    
+    UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:newSettingsVC];
+    
+ //   [self.navigationController pushViewController:nc animated:YES];
+    
+    [self.navigationController presentViewController:nc animated:YES
+                                          completion:^{
+                                              
+                                          }];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
