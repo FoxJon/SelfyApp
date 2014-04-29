@@ -40,41 +40,39 @@
         title.textAlignment = 1;
         [newForm addSubview:title];
         
-        userNameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 175, 200, 40)];
+        userNameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 170, 200, 40)];
         userNameLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         userNameLabel.layer.cornerRadius = 6;
         userNameLabel.delegate = self;
         userNameLabel.leftViewMode = UITextFieldViewModeAlways;
         userNameLabel.placeholder = @" Enter user name";
-        userNameLabel.textAlignment = 1;
         userNameLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
         
         userNameLabel.delegate = self;
 
         [newForm addSubview:userNameLabel];
 
-        passwordLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 250, 200, 40)];
+        passwordLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 220, 200, 40)];
         passwordLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         passwordLabel.layer.cornerRadius = 6;
         passwordLabel.delegate = self;
         passwordLabel.leftViewMode = UITextFieldViewModeAlways;
         passwordLabel.placeholder = @" Enter password";
         passwordLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
-        passwordLabel.textAlignment = 1;
         passwordLabel.secureTextEntry = YES;
         
         passwordLabel.delegate = self;
         
         [newForm addSubview:passwordLabel];
         
-        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 325, 100, 40)];
+        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 280, 100, 40)];
         [submitButton setTitle:@"LOG IN" forState:UIControlStateNormal];
-        [submitButton addTarget:self action:@selector(newUser) forControlEvents:UIControlEventTouchUpInside];
+        [submitButton addTarget:self action:@selector(logIn) forControlEvents:UIControlEventTouchUpInside];
         submitButton.backgroundColor = [UIColor blueColor];
         submitButton.layer.cornerRadius = 6;
         [newForm addSubview:submitButton];
         
-        UIButton *newUserButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 365, 100, 40)];
+        UIButton *newUserButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 320, 100, 20)];
         [newUserButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:12.0]];
         [newUserButton setTitle:@"New User?" forState:UIControlStateNormal];
         [newUserButton addTarget:self action:@selector(signIn) forControlEvents:UIControlEventTouchUpInside];
@@ -128,7 +126,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)newUser{
+- (void)logIn{
     
     PFUser * user = [PFUser currentUser];
     
@@ -150,25 +148,20 @@
     [self.view addSubview:spinner];
     [spinner startAnimating];
       
-    
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
- 
-        if (error == nil)
-        {
+    [PFUser logInWithUsernameInBackground:@"username" password:@"password"
+    block:^(PFUser *user, NSError *error) {
+        if (user) {
             self.navigationController.navigationBarHidden = NO;
             self.navigationController.viewControllers = @[[[SLFTableVC alloc]initWithStyle:UITableViewStylePlain]];
-            
-        }else{
-            
+        } else {
             NSString * errorDescription = error.userInfo[@"error"];
             
             [spinner removeFromSuperview];
-
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"ERROR" message: errorDescription delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alert show];
         }
-        
-
-   }];
+    }];
+ 
 }
 
 /*

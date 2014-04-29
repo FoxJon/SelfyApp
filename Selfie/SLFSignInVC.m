@@ -7,9 +7,8 @@
 //
 
 #import "SLFSignInVC.h"
-#import <Parse/Parse.h>
 #import "SLFTableVC.h"
-
+#import <Parse/Parse.h>
 
 @interface SLFSignInVC () <UITextFieldDelegate>
 
@@ -19,6 +18,7 @@
 
 {
     UITextField * userNameLabel;
+    UITextField * nameLabel;
     UITextField * passwordLabel;
     UITextField * emailLabel;
     UIActivityIndicatorView * spinner;
@@ -34,7 +34,6 @@
         newForm = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
         [self.view addSubview:newForm];
         
-        
         UILabel * title = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 50, 200, 100)];
         title.text = @"Selfy";
         title.font = [UIFont fontWithName:@"zapfino" size:25.0];
@@ -42,13 +41,25 @@
         title.textAlignment = 1;
         [newForm addSubview:title];
         
-        userNameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 175, 200, 40)];
+        nameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 150, 200, 40)];
+        nameLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+        nameLabel.layer.cornerRadius = 6;
+        nameLabel.delegate = self;
+        nameLabel.leftViewMode = UITextFieldViewModeAlways;
+        nameLabel.placeholder = @" First and last name";
+        nameLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
+        
+        nameLabel.delegate = self;
+        
+        [newForm addSubview:nameLabel];
+
+        
+        userNameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 200, 200, 40)];
         userNameLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         userNameLabel.layer.cornerRadius = 6;
         userNameLabel.delegate = self;
         userNameLabel.leftViewMode = UITextFieldViewModeAlways;
         userNameLabel.placeholder = @" Enter user name";
-        userNameLabel.textAlignment = 1;
         userNameLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
         
         userNameLabel.delegate = self;
@@ -62,14 +73,13 @@
         passwordLabel.leftViewMode = UITextFieldViewModeAlways;
         passwordLabel.placeholder = @" Enter password";
         passwordLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
-        passwordLabel.textAlignment = 1;
         passwordLabel.secureTextEntry = YES;
         
         passwordLabel.delegate = self;
         
         [newForm addSubview:passwordLabel];
         
-        emailLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 325, 200, 40)];
+        emailLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 300, 200, 40)];
         emailLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         emailLabel.layer.cornerRadius = 6;
         emailLabel.delegate = self;
@@ -77,18 +87,27 @@
         emailLabel.placeholder = @" Enter email";
         emailLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
         emailLabel.keyboardType = UIKeyboardTypeEmailAddress;
-        emailLabel.textAlignment = 1;
         
         emailLabel.delegate = self;
         
         [newForm addSubview:emailLabel];
         
-        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 400, 100, 40)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-30), 350, 60, 60)];
+        imageView.image = [UIImage imageNamed: @"BF049b.png"];
+        imageView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [newForm addSubview:imageView];
+
+        
+        UIButton *submitButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 420, 100, 40)];
         [submitButton setTitle:@"SIGN IN" forState:UIControlStateNormal];
         [submitButton addTarget:self action:@selector(newUser) forControlEvents:UIControlEventTouchUpInside];
         submitButton.backgroundColor = [UIColor blueColor];
         submitButton.layer.cornerRadius = 6;
         [newForm addSubview:submitButton];
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem;
+
         
     }
     return self;
@@ -125,9 +144,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -139,26 +157,30 @@
     
     PFUser * user = [PFUser currentUser];
     
+    user[@"First_Last"] = nameLabel.text;
     user.username = userNameLabel.text;
     user.password = passwordLabel.text;
+    user.email = emailLabel.text;
     
-    
-    
+    nameLabel.text=nil;
     userNameLabel.text = nil;
     passwordLabel.text = nil;
+    emailLabel.text = nil;
     
-    [passwordLabel resignFirstResponder];
+    [nameLabel resignFirstResponder];
     [userNameLabel resignFirstResponder];
+    [passwordLabel resignFirstResponder];
+    [emailLabel resignFirstResponder];
     
     spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 400);
+    spinner.center = CGPointMake(160, 480);
     spinner.hidesWhenStopped = YES;
     [spinner setColor:[UIColor orangeColor]];
     [self.view addSubview:spinner];
     [spinner startAnimating];
     
     
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         if (error == nil)
         {
@@ -177,16 +199,5 @@
         
     }];
 }
-
-/*
- #pragma mark - Navigation
- 
- In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

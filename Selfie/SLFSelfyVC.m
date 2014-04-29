@@ -42,15 +42,6 @@
         submitButton.layer.cornerRadius = 6;
         [newForm addSubview:submitButton];
         
-        
-//        UIButton *CancelButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 450, 100, 40)];
-//        [CancelButton setTitle:@"CANCEL" forState:UIControlStateNormal];
-//        // [submitButton addTarget:self action:@selector(newUser)forControlEvents:UIControlEventTouchUpInside];
-//        CancelButton.backgroundColor = [UIColor redColor];
-//        CancelButton.layer.cornerRadius = 6;
-//        
-//        [newForm addSubview:CancelButton];
-        
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapScreen)];
         [self.view addGestureRecognizer:tap];
 
