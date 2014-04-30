@@ -10,4 +10,11 @@
 
 @interface SLFSettingsButton : UIButton
 
+@property (nonatomic, getter = isToggled) BOOL toggled;
+
+@property (nonatomic) UIColor * toggledTintColor;
+
+
+-(void)toggle;
+
 @end

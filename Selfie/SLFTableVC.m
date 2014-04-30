@@ -21,8 +21,9 @@
 
 @implementation SLFTableVC
 {
-NSArray * selfies;
-
+    NSArray * selfies;
+    SLFSettingsButton * settingsButtonView;
+    SLFSettingsVC * settingsVC;
 }
 
 
@@ -56,8 +57,6 @@ NSArray * selfies;
 {
     [super viewDidLoad];
     
-    
-    
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     
@@ -65,32 +64,15 @@ NSArray * selfies;
     UIBarButtonItem * addNewSelfyButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openNewSelfy)];
     self.navigationItem.rightBarButtonItem = addNewSelfyButton;
     
-    UIButton * settingsView = [[UIButton alloc]initWithFrame:CGRectMake(10, 10, 10, 10)];
-    settingsView.backgroundColor = [UIColor redColor];
-    [settingsView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+    settingsButtonView = [[SLFSettingsButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    settingsButtonView.backgroundColor = [UIColor clearColor];
+    [settingsButtonView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+    settingsButtonView.toggledTintColor = [UIColor redColor];
     
-    
-    UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithCustomView:settingsView];
+    UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithCustomView:settingsButtonView];
     self.navigationItem.leftBarButtonItem = settingsButton;
     
-    
-    
-//    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-//    header.backgroundColor = [UIColor lightGrayColor];
-//    self.tableView.tableHeaderView = header;
-//    
-//    UILabel *selfyLabel = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-25), 0, 100, 40)];
-//    selfyLabel.text = @"SELFY";
-//    [header addSubview:selfyLabel];
-//
-//    UIButton *addButton = [UIButton buttonWithType:
-//                               UIButtonTypeContactAdd];
-//    [addButton setFrame:CGRectMake(200, 0, 200, 40)];
-//    [header addSubview:addButton];
-//    
-//    UILabel *settings = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 100, 40)];
-//    settings.text = @"\u2699";
-//    [header addSubview:settings];
+
 
 }
 -(void)openSettings
