@@ -12,6 +12,7 @@
 #import "SLFNewNavController.h"
 #import "SLFSettingsButton.h"
 #import "SLFSettingsVC.h"
+#import "SLFCancelButton.h"
 
 #import <Parse/Parse.h>
 
@@ -22,6 +23,7 @@
 @implementation SLFTableVC
 {
 NSArray * selfies;
+
 
 }
 
@@ -65,48 +67,48 @@ NSArray * selfies;
     UIBarButtonItem * addNewSelfyButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(openNewSelfy)];
     self.navigationItem.rightBarButtonItem = addNewSelfyButton;
     
-    UIButton * settingsView = [[UIButton alloc]initWithFrame:CGRectMake(10, 10, 10, 10)];
-    settingsView.backgroundColor = [UIColor redColor];
-    [settingsView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     
+    SLFSettingsButton * settingsView = [[SLFSettingsButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    settingsView.backgroundColor = [UIColor clearColor];
+    [settingsView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithCustomView:settingsView];
     self.navigationItem.leftBarButtonItem = settingsButton;
-    
-    
-    
-//    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-//    header.backgroundColor = [UIColor lightGrayColor];
-//    self.tableView.tableHeaderView = header;
-//    
-//    UILabel *selfyLabel = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-25), 0, 100, 40)];
-//    selfyLabel.text = @"SELFY";
-//    [header addSubview:selfyLabel];
-//
-//    UIButton *addButton = [UIButton buttonWithType:
-//                               UIButtonTypeContactAdd];
-//    [addButton setFrame:CGRectMake(200, 0, 200, 40)];
-//    [header addSubview:addButton];
-//    
-//    UILabel *settings = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 100, 40)];
-//    settings.text = @"\u2699";
-//    [header addSubview:settings];
 
 }
 -(void)openSettings
 {
-    SLFSettingsVC * newSettingsVC = [[SLFSettingsVC alloc] initWithNibName:nil bundle:nil];
+    SLFSettingsVC * svc = [[SLFSettingsVC alloc]initWithNibName:nil bundle:nil];
     
-    UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:newSettingsVC];
+    [self.navigationController.view addSubview:svc.view];
     
- //   [self.navigationController pushViewController:nc animated:YES];
+    svc.view.frame = CGRectMake(-280, 0, 280, self.view.frame.size.height);
+    svc.view.backgroundColor = [UIColor lightGrayColor];
     
-    [self.navigationController presentViewController:nc animated:YES
-                                          completion:^{
-                                              
-                                          }];
+    if (self.navigationController.view.frame.origin.x < 10) {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.navigationController.view.frame = CGRectMake(280, 0, self.view.frame.size.width, self.view.frame.size.height);
+        }];
+        SLFCancelButton * cancelView = [[SLFCancelButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+        cancelView.backgroundColor = [UIColor clearColor];
+        [cancelView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithCustomView:cancelView];
+        self.navigationItem.leftBarButtonItem = settingsButton;
+        
+    }else{
+        [UIView animateWithDuration:0.2 animations:^{
+            self.navigationController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+            }];
+        SLFSettingsButton * settingsView = [[SLFSettingsButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+        settingsView.backgroundColor = [UIColor clearColor];
+        [settingsView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithCustomView:settingsView];
+        self.navigationItem.leftBarButtonItem = settingsButton;
+        
+    }
 }
-
 
 -(void)viewWillAppear:(BOOL)animated
 {

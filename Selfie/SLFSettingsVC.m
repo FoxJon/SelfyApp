@@ -20,9 +20,22 @@
     if (self) {
         // Custom initialization
         self.view.backgroundColor = [UIColor whiteColor];
+        
+        UITextField *nameLabel = [[UITextField alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 150, 200, 40)];
+        nameLabel.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+        nameLabel.layer.cornerRadius = 6;
+        nameLabel.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 40)];
+        nameLabel.leftViewMode = UITextFieldViewModeAlways;
+        nameLabel.placeholder = @"Settings";
+        nameLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
+        
+        [self.view addSubview:nameLabel];
     }
     return self;
 }
+
+
+
 
 - (void)viewDidLoad
 {

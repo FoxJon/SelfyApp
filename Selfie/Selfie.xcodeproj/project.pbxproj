@@ -29,6 +29,7 @@
 		B0A55B16190AEB5D00E0CB80 /* SLFNewNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A55B15190AEB5D00E0CB80 /* SLFNewNavController.m */; };
 		B0A9B9A219101BF5000F70DB /* SLFSettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A9B9A119101BF5000F70DB /* SLFSettingsButton.m */; };
 		B0A9B9A519102758000F70DB /* SLFSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A9B9A419102758000F70DB /* SLFSettingsVC.m */; };
+		B0A9B9AB19108EB9000F70DB /* SLFCancelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A9B9AA19108EB9000F70DB /* SLFCancelButton.m */; };
 		B0F4EFA91906B88F0001F190 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFA81906B88F0001F190 /* Parse.framework */; };
 		B0F4EFAB1906BD280001F190 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFAA1906BD280001F190 /* AudioToolbox.framework */; };
 		B0F4EFAD1906BD300001F190 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F4EFAC1906BD300001F190 /* CFNetwork.framework */; };
@@ -86,6 +87,8 @@
 		B0A9B9A119101BF5000F70DB /* SLFSettingsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFSettingsButton.m; sourceTree = "<group>"; };
 		B0A9B9A319102758000F70DB /* SLFSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFSettingsVC.h; sourceTree = "<group>"; };
 		B0A9B9A419102758000F70DB /* SLFSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFSettingsVC.m; sourceTree = "<group>"; };
+		B0A9B9A919108EB9000F70DB /* SLFCancelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLFCancelButton.h; sourceTree = "<group>"; };
+		B0A9B9AA19108EB9000F70DB /* SLFCancelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLFCancelButton.m; sourceTree = "<group>"; };
 		B0F4EFA81906B88F0001F190 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		B0F4EFAA1906BD280001F190 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B0F4EFAC1906BD300001F190 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -242,6 +245,8 @@
 				B04CF3EA19058AAB00A265B5 /* TableViewCell */,
 				B0A9B9A019101BF5000F70DB /* SLFSettingsButton.h */,
 				B0A9B9A119101BF5000F70DB /* SLFSettingsButton.m */,
+				B0A9B9A919108EB9000F70DB /* SLFCancelButton.h */,
+				B0A9B9AA19108EB9000F70DB /* SLFCancelButton.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0F4EFC11906E1370001F190 /* SLFSelfyVC.m in Sources */,
+				B0A9B9AB19108EB9000F70DB /* SLFCancelButton.m in Sources */,
 				B0A55B16190AEB5D00E0CB80 /* SLFNewNavController.m in Sources */,
 				B0A9B9A219101BF5000F70DB /* SLFSettingsButton.m in Sources */,
 				B0A9B9A519102758000F70DB /* SLFSettingsVC.m in Sources */,
