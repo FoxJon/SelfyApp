@@ -66,27 +66,41 @@
     
     settingsButtonView = [[SLFSettingsButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
     settingsButtonView.backgroundColor = [UIColor clearColor];
-    [settingsButtonView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     settingsButtonView.toggledTintColor = [UIColor redColor];
     
     UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithCustomView:settingsButtonView];
     self.navigationItem.leftBarButtonItem = settingsButton;
     
-
-
+    [settingsButtonView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
 }
+
 -(void)openSettings
 {
-    SLFSettingsVC * newSettingsVC = [[SLFSettingsVC alloc] initWithNibName:nil bundle:nil];
     
-    UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:newSettingsVC];
+    [settingsButtonView toggle];
     
- //   [self.navigationController pushViewController:nc animated:YES];
+    int X = [settingsButtonView isToggled] ? SCREEN_WIDTH - 52:0; //if yes 50, else 0
     
-    [self.navigationController presentViewController:nc animated:YES
-                                          completion:^{
-                                              
-                                          }];
+    [UIView animateWithDuration:0.3 delay:0.0 options:
+     UIViewAnimationOptionCurveEaseInOut animations:^{
+    
+        self.navigationController.view.frame = CGRectMake(X, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    } completion:^(BOOL finished) {
+        if(![settingsButtonView isToggled])
+        {
+            [settingsVC.view removeFromSuperview];
+        }
+
+    }];
+    if([settingsButtonView isToggled])
+    {
+        if (settingsVC == nil) settingsVC = [[SLFSettingsVC alloc]initWithNibName:nil bundle:nil];
+        
+        settingsVC.view.frame = CGRectMake(52 - SCREEN_WIDTH, 0, SCREEN_WIDTH-52, SCREEN_HEIGHT);
+
+        [self.navigationController.view addSubview:settingsVC.view];
+    }
 }
 
 
