@@ -197,6 +197,9 @@
 
 - (void)newUser{
     
+    avatar.image = [UIImage imageNamed:@"BF049b"];
+    NSData * imageData = UIImagePNGRepresentation(avatar.image);
+    PFFile * imageFile = [PFFile fileWithName:@"avatar.png" data:imageData];
     
     PFUser * user = [PFUser user];
     
@@ -204,6 +207,7 @@
     user.username = userNameLabel.text;
     user.password = passwordLabel.text;
     user.email = emailLabel.text;
+    user[@"avatar"] = imageFile;
     
     nameLabel.text=nil;
     userNameLabel.text = nil;

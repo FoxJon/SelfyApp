@@ -63,14 +63,8 @@
 {
     _selfyInfo = selfyInfo;
  
-//  selfyCaption.text = selfyInfo[@"caption"];
     selfyCaption.text = [selfyInfo objectForKey:@"caption"];
 
-//    
-//    NSURL * imageURL = [NSURL URLWithString:selfyInfo[@"image"]];
-//    NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
-//    UIImage * image = [UIImage imageWithData:imageData];
-   
     PFFile *imageFile = [selfyInfo objectForKey:@"images"];
     
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -82,16 +76,16 @@
         
     }];
     
+    PFUser * user = [selfyInfo objectForKey:@"parent"];
     
-//    selfyUserID.text = selfyInfo[@"user_id"];
-    
-//    imageURL = [NSURL URLWithString:selfyInfo[@"avatar"]];
-//    imageData = [NSData dataWithContentsOfURL:imageURL];
-//    image = [UIImage imageWithData:imageData];
-//    avatarView.image = image;
-
-
-    
+    [user fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        
+        PFFile * avatarFile = [object objectForKey:@"avatar"];
+        [avatarFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error)
+         {
+             avatarView.image = [UIImage imageWithData:data];
+        }];
+    }];
 }
 
 @end
