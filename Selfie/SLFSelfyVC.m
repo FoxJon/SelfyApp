@@ -10,7 +10,9 @@
 #import <Parse/Parse.h>
 #import "SLFTableVC.h"
 
-@interface SLFSelfyVC () <UITextViewDelegate>
+@interface SLFSelfyVC () <UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (nonatomic)UIImage * originalImage;
 
 @end
 
@@ -19,6 +21,8 @@
     UIView * newForm;
     UITextView * caption;
     UIImageView * imageView;
+    UIImagePickerController * imagePicker;
+
 }
 
 //-(BOOL)prefersStatusBarHidden {return YES;}
@@ -57,7 +61,7 @@
     
     
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-140), 20, 280, 280)];
-    imageView.image = [UIImage imageNamed: @"BF049b.png"];
+ //   imageView.image = [UIImage imageNamed: @"BF049b.png"];
     imageView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [newForm addSubview:imageView];
@@ -76,7 +80,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-//    [self createForm];
+    [self createForm];
 
 }
 
@@ -118,6 +122,12 @@
     
     cancelNewSelfyButton.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = cancelNewSelfyButton;
+    
+    UIBarButtonItem * addNewSelfyButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(addNewSelfy)];
+    
+    addNewSelfyButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = addNewSelfyButton;
+
 }
 
 -(void)cancelNewSelfy
@@ -167,6 +177,40 @@
     //PFObject class name "UserSelfy"
     //put a png file inside app
     //PFFile
+}
+
+-(void)addNewSelfy
+{
+    imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.delegate = self;
+    //   imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePicker.sourceType];
+    
+    [self presentViewController:imagePicker animated:NO completion:nil];
+}
+
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.originalImage = info[UIImagePickerControllerOriginalImage];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)setOriginalImage:(UIImage *)originalImage
+{
+    _originalImage = originalImage;
+    
+ //   filterVC.imageToFilter = originalImage;
+    imageView.image = originalImage;
+    
+}
+
+-(void)updateCurrentImageWithFilteredImage:(UIImage *)image
+{
+    imageView.image = image;
 }
 
 /*
