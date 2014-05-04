@@ -41,6 +41,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     newForm = [[UIView alloc] initWithFrame:CGRectMake(0, -50, 320, self.view.frame.size.height)];
+   
     [self.view addSubview:newForm];
     
     UILabel * title = [[UILabel alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-100), 50, 200, 100)];

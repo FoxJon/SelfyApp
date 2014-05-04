@@ -9,8 +9,9 @@
 #import "SLFSelfyVC.h"
 #import <Parse/Parse.h>
 #import "SLFTableVC.h"
+#import "SLFFilterController.h"
 
-@interface SLFSelfyVC () <UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface SLFSelfyVC () <UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SLFFilterControllerDelegate>
 
 @property (nonatomic)UIImage * originalImage;
 
@@ -22,7 +23,7 @@
     UITextView * caption;
     UIImageView * imageView;
     UIImagePickerController * imagePicker;
-
+    SLFFilterController * filterVC;
 }
 
 //-(BOOL)prefersStatusBarHidden {return YES;}
@@ -36,18 +37,21 @@
         
         [self createForm];
         
-        self.view.backgroundColor = [UIColor whiteColor];
+        self.view.backgroundColor = [UIColor blackColor];
         
         
-        UIButton *submitButton = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 400, 100, 40)];
+        UIButton *submitButton = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 360, 100, 40)];
         [submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
         [submitButton addTarget:self action:@selector(newSelfy)forControlEvents:UIControlEventTouchUpInside];
         submitButton.backgroundColor = [UIColor blueColor];
         submitButton.layer.cornerRadius = 6;
-        [newForm addSubview:submitButton];
+        [self.view addSubview:submitButton];
         
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapScreen)];
         [self.view addGestureRecognizer:tap];
+        
+
+
 
     }
     return self;
@@ -56,25 +60,36 @@
 -(void)createForm
 {
     
-    newForm = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
-    [self.view addSubview:newForm];
+//    newForm = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+//    [self.view addSubview:newForm];
     
     
-    imageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-140), 20, 280, 280)];
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
  //   imageView.image = [UIImage imageNamed: @"BF049b.png"];
-    imageView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+    imageView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.1];
+  //  imageView.backgroundColor = [UIColor whiteColor
+
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [newForm addSubview:imageView];
+    [self.view addSubview:imageView];
     
     
-    caption = [[UITextView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-120), 310, 240, 80)];
-    caption.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+    caption = [[UITextView alloc] initWithFrame:CGRectMake(40, 330, 240, 20)];
+    caption.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.1];
     caption.textColor = [UIColor darkGrayColor];
  //   caption.text = @"Enter Caption Here";
     caption.delegate = self;
     caption.keyboardType = UIKeyboardTypeTwitter;
     
-    [newForm addSubview:caption];
+    [self.view addSubview:caption];
+    
+    filterVC = [[SLFFilterController alloc]initWithNibName:nil bundle:nil];
+
+    filterVC.delegate =self;
+    filterVC.view.frame = CGRectMake(0, self.view.frame.size.height-100, 320, 100);
+    
+    //filterVC.view.backgroundColor = [UIColor purpleColor];
+
+    [self.view addSubview:filterVC.view];
 
 }
 
@@ -111,7 +126,7 @@
 }
 
 
-- (void)viewDidLoad
+- (void)viewDidLayoutSubviews
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -164,7 +179,7 @@
     spinner.center = CGPointMake(160, 390);
     spinner.hidesWhenStopped = YES;
     [spinner setColor:[UIColor orangeColor]];
-    [newForm addSubview:spinner];
+    [self.view addSubview:spinner];
     [spinner startAnimating];
     
     [newSelfy saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -203,7 +218,7 @@
 {
     _originalImage = originalImage;
     
- //   filterVC.imageToFilter = originalImage;
+    filterVC.imageToFilter = originalImage;
     imageView.image = originalImage;
     
 }
