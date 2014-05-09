@@ -67,10 +67,8 @@
     settingsButtonView = [[SLFSettingsButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
     settingsButtonView.backgroundColor = [UIColor clearColor];
     settingsButtonView.toggledTintColor = [UIColor redColor];
-    
     UIBarButtonItem * settingsButton = [[UIBarButtonItem alloc]initWithCustomView:settingsButtonView];
     self.navigationItem.leftBarButtonItem = settingsButton;
-    
     [settingsButtonView addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
 }
 
