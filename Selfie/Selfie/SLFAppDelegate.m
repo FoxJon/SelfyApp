@@ -41,7 +41,8 @@
         nc.navigationBarHidden = YES;
 
     }else{
-        nc = [[UINavigationController alloc]initWithRootViewController:[[SLFTableVC alloc]initWithStyle:UITableViewStylePlain]];    }
+        nc = [[UINavigationController alloc]initWithRootViewController:[[SLFTableVC alloc]initWithStyle:UITableViewStylePlain]];
+    }
     
 //  self.window.rootViewController = [[SLFSelfyVC alloc]initWithNibName:nil bundle:nil];
     self.window.rootViewController = nc;
