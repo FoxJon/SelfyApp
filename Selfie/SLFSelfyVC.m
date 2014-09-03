@@ -7,8 +7,13 @@
 //
 
 #import "SLFSelfyVC.h"
+#import <Parse/Parse.h>
+#import "SLFTableVC.h"
+#import "SLFFilterController.h"
 
-@interface SLFSelfyVC () <UITextViewDelegate>
+@interface SLFSelfyVC () <UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SLFFilterControllerDelegate>
+
+@property (nonatomic)UIImage * originalImage;
 
 @end
 
@@ -16,7 +21,13 @@
 {
     UIView * newForm;
     UITextView * caption;
+    UIImageView * imageView;
+    UIImagePickerController * imagePicker;
+    SLFFilterController * filterVC;
 }
+
+//-(BOOL)prefersStatusBarHidden {return YES;}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,55 +35,75 @@
     if (self) {
         // Custom initialization
         
-        newForm = [[UIView alloc] initWithFrame:self.view.frame];
-        [self.view addSubview:newForm];
+        [self createForm];
+        
+        self.view.backgroundColor = [UIColor blackColor];
         
         
-        UIImageView * imageArea = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-140), 20, 280, 280)];
-        imageArea.image = [UIImage imageNamed: @"camera.png"];
-        imageArea.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
-        imageArea.contentMode = UIViewContentModeCenter;
-        [newForm addSubview:imageArea];
-        
-        
-        caption = [[UITextView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-120), 310, 240, 80)];
-        caption.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
-        caption.textColor = [UIColor darkGrayColor];
-        caption.text = @"Enter Caption Here";
-        caption.delegate = self;
-        caption.keyboardType = UIKeyboardTypeTwitter;
-        
-        [newForm addSubview:caption];
-        
-        
-        UIButton *submitButton = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 400, 100, 40)];
+        UIButton *submitButton = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 360, 100, 40)];
         [submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
-        // [submitButton addTarget:self action:@selector(newUser)forControlEvents:UIControlEventTouchUpInside];
+        [submitButton addTarget:self action:@selector(newSelfy)forControlEvents:UIControlEventTouchUpInside];
         submitButton.backgroundColor = [UIColor blueColor];
         submitButton.layer.cornerRadius = 6;
-        [newForm addSubview:submitButton];
-        
-        
-        UIButton *CancelButton = [[UIButton alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2-50), 450, 100, 40)];
-        [CancelButton setTitle:@"CANCEL" forState:UIControlStateNormal];
-        // [submitButton addTarget:self action:@selector(newUser)forControlEvents:UIControlEventTouchUpInside];
-        CancelButton.backgroundColor = [UIColor redColor];
-        CancelButton.layer.cornerRadius = 6;
-        
-        [newForm addSubview:CancelButton];
+        [self.view addSubview:submitButton];
         
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapScreen)];
         [self.view addGestureRecognizer:tap];
+        
+
+
 
     }
     return self;
+}
+
+-(void)createForm
+{
+    
+//    newForm = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+//    [self.view addSubview:newForm];
+    
+    
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+ //   imageView.image = [UIImage imageNamed: @"BF049b.png"];
+    imageView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.1];
+  //  imageView.backgroundColor = [UIColor whiteColor
+
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:imageView];
+    
+    
+    caption = [[UITextView alloc] initWithFrame:CGRectMake(40, 330, 240, 20)];
+    caption.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.1];
+    caption.textColor = [UIColor darkGrayColor];
+ //   caption.text = @"Enter Caption Here";
+    caption.delegate = self;
+    caption.keyboardType = UIKeyboardTypeTwitter;
+    
+    [self.view addSubview:caption];
+    
+    filterVC = [[SLFFilterController alloc]initWithNibName:nil bundle:nil];
+
+    filterVC.delegate =self;
+    filterVC.view.frame = CGRectMake(0, self.view.frame.size.height-100, 320, 100);
+    
+    //filterVC.view.backgroundColor = [UIColor purpleColor];
+
+    [self.view addSubview:filterVC.view];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self createForm];
+
 }
 
 -(void)tapScreen
 {
     [caption resignFirstResponder];
      [UIView animateWithDuration:0.2 animations:^{
-        newForm.frame = self.view.frame;
+        newForm.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
     }];
 }
 
@@ -90,17 +121,39 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     [UIView animateWithDuration:0.2 animations:^{
-    newForm.frame = CGRectMake(0, -KB_HEIGHT, 320, self.view.frame.size.height);
+    newForm.frame = CGRectMake(0, -150, 320, self.view.frame.size.height);
     }];
 }
 
 
-- (void)viewDidLoad
+- (void)viewDidLayoutSubviews
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    UIBarButtonItem * cancelNewSelfyButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelNewSelfy)];
+    
+    cancelNewSelfyButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = cancelNewSelfyButton;
+    
+    UIBarButtonItem * addNewSelfyButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(addNewSelfy)];
+    
+    addNewSelfyButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = addNewSelfyButton;
 
 }
+
+-(void)cancelNewSelfy
+{
+
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -110,9 +163,69 @@
 
 - (void)newSelfy  //called when hitting submit button
 {
+    //connect current user to newSelfy as parent (parse/objects/relational data)
+    
+ //   UIImage *image = [UIImage imageNamed:@"images2"];
+    NSData *imageData = UIImagePNGRepresentation(imageView.image);
+    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData]; //the file name on parse
+    
+    PFObject *newSelfy = [PFObject objectWithClassName:@"UserSelfy"];
+    
+    newSelfy[@"caption"] = caption.text;
+    newSelfy[@"images"] = imageFile;
+    newSelfy[@"parent"] = [PFUser currentUser];
+
+    UIActivityIndicatorView * spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 390);
+    spinner.hidesWhenStopped = YES;
+    [spinner setColor:[UIColor orangeColor]];
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
+    
+    [newSelfy saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+       
+        [spinner removeFromSuperview];
+        [self cancelNewSelfy];  //if this was just "save", nothing else would continue until done
+    }];
+    
+    
     //PFObject class name "UserSelfy"
     //put a png file inside app
     //PFFile
+}
+
+-(void)addNewSelfy
+{
+    imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.delegate = self;
+    //   imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePicker.sourceType];
+    
+    [self presentViewController:imagePicker animated:NO completion:nil];
+}
+
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.originalImage = info[UIImagePickerControllerOriginalImage];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)setOriginalImage:(UIImage *)originalImage
+{
+    _originalImage = originalImage;
+    
+    filterVC.imageToFilter = originalImage;
+    imageView.image = originalImage;
+    
+}
+
+-(void)updateCurrentImageWithFilteredImage:(UIImage *)image
+{
+    imageView.image = image;
 }
 
 /*
